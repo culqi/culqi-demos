@@ -12,8 +12,8 @@ flowchart TD
 
   api[api-services]
   checkout[Checkout]
-  js-v4[Checkout JS-V4 with Culqi 3DS]
-  custom[Custom Checkout with Culqi 3DS]
+  js-v4[Checkout JS-V4 \n with Culqi 3DS]
+  custom[Custom Checkout \n with Culqi 3DS]
   soon[coming soon...]
   %% charge[Cargos]
   %% order[Ordenes]
