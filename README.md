@@ -12,7 +12,7 @@ flowchart TD
 
   api[api-services]
   checkout[Checkout]
-  v4[Checkout V4]
+  js-v4[Checkout JS-V4]
   custom[Custom Checkout]
   %% charge[Cargos]
   %% order[Ordenes]
@@ -21,7 +21,7 @@ flowchart TD
   Frameworks[Languages / Frameworks]
     Frameworks --> api
     Frameworks --> checkout
-    checkout --> v4
+    checkout --> js-v4
     checkout --> custom
     %% api --> charge
     %% api --> order
