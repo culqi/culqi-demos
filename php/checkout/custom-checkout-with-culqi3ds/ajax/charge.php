@@ -19,14 +19,16 @@ try {
   // Creando Cargo a una tarjeta
   $tds = array();
   if (isset($_POST["eci"])) {
-    $tds = array("authentication_3DS" => array(
-      "eci" => $_POST["eci"],
-      "xid" => $_POST["xid"],
-      "cavv" => $_POST["cavv"],
-      "protocolVersion" => $_POST["protocolVersion"],
-      "directoryServerTransactionId" => $_POST["directoryServerTransactionId"]
-    ));
-}
+    $tds = array(
+      "authentication_3DS" => array(
+        "eci" => $_POST["eci"],
+        "xid" => $_POST["xid"],
+        "cavv" => $_POST["cavv"],
+        "protocolVersion" => $_POST["protocolVersion"],
+        "directoryServerTransactionId" => $_POST["directoryServerTransactionId"]
+      )
+    );
+  }
 
   $req_body = array(
     "amount" => $_POST["amount"],
@@ -51,10 +53,10 @@ try {
     )
   );
   $with_tds = ($req_body) + $tds;
-  
-  if (ACTIVE_ENCRYPT){
-    $charge = $culqi->Charges->create($with_tds,$encryption_params);
-  }else{
+
+  if (ACTIVE_ENCRYPT) {
+    $charge = $culqi->Charges->create($with_tds, $encryption_params);
+  } else {
     $charge = $culqi->Charges->create($with_tds);
   }
   echo json_encode($charge);

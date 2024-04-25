@@ -1,0 +1,44 @@
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<div class="w-full max-w-lg hidden" id="cip">
+  <div class="md:items-center" id="button">
+    <div class="md:w-1/3"></div>
+    <div class="flex items-center justify-center w-full">
+      <button
+        onClick="desactivaBoton(this)"
+        data-text-button="Generando CIP..."
+        class="px-4 py-2 font-bold text-white bg-purple-500 rounded shadow hover:bg-purple-400 focus:shadow-outline focus:outline-none"
+        type="button"
+        data-button-method="cip"
+      >
+        Generar CIP
+      </button>
+    </div>
+  </div>
+  <div
+    class="grid grid-cols-2 gap-4 place-content-around border-2 hidden"
+    id="result"
+  >
+    <div
+      class="flex flex-col grid-rows-2 place-content-center place-items-center"
+    >
+      <p class="block">Payment code</p>
+      <span
+        class="border-2 border-indigo-200 border-indigo-500 rounded-lg py-2 px-8"
+        id="payment-code"
+      ></span>
+    </div>
+    <div
+      class="flex flex-col grid-rows-2 place-content-center place-items-center"
+    >
+      <p class="block">QR code</p>
+      <img
+        id="qr"
+        src="https://chart.googleapis.com/chart?cht=qr&chl=1232323&chs=180x180&choe=UTF-8&chld=L|2"
+        alt=""
+      />
+      <p class="hidden" id="response-qr"></p>
+    </div>
+  </div>
+</div>

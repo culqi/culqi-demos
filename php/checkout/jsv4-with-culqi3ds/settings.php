@@ -1,0 +1,7 @@
+<?php
+
+define('PUBLIC_KEY', 'INSERTE_SU_LLAVE_PUBLICA');
+define('SECRET_KEY', "INSERTE_SU_LLAVE_PRIVADA");
+define('RSA_ID', "INSERTE_SU_RSA_ID");
+define('RSA_PUBLIC_KEY', 'INSERTE_SU_LLAVE_RSA');
+define('EMAIL_CUSTOMER', 'prueba1@culqi.com');

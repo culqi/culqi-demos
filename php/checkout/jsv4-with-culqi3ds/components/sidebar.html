@@ -1,0 +1,95 @@
+<aside class="w-64" aria-label="Sidebar">
+  <div class="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
+    <a href="https://flowbite.com/" class="flex items-center pl-2.5 mb-5">
+      <img src="https://culqi.com/assets/images/brand/culqi-logo.png" class="mr-3 h-6 sm:h-7" alt="Flowbite Logo">
+    </a>
+    <ul class="space-y-2">
+      <li>
+        <button class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 w-full justify-start"
+          data-payment-method-menus="token">
+          <span class="w-[35px] flex items-center justify-center">
+            <i class="gg-credit-card"></i>
+          </span>
+          <span class="ml-3">Tarjetas</span>
+          </a¿>
+      </li>
+      <li>
+        <button type="button" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 w-full justify-start"
+          aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+          <span class="w-[35px] flex items-center justify-center">
+            <i class="gg-qr"></i>
+          </span>
+          <span class="ml-3 text-left whitespace-nowrap" sidebar-toggle-item="">Órdenes</span>
+          <svg sidebar-toggle-item="" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        <ul id="dropdown-example" class=" py-2 space-y-2">
+          <li>
+            <button data-payment-method-menus="cip"
+              class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">CIP</button>
+          </li>
+          <li>
+            <button data-payment-method-menus="cuotealo"
+              class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Cuotéalo</button>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <button data-payment-method-menus="yape"
+          class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 w-full justify-start">
+          <span class="w-[35px] flex items-center justify-center">
+            <i class="gg-smartphone-shake"></i>
+          </span>
+          <span class="ml-3 whitespace-nowrap">Yape</span>
+          <span class="inline-flex justify-center items-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">Limit</span>
+        </button>
+      </li>
+      <!--li>
+        <button id="open-checkout"
+          class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 w-full justify-start">
+          <span class="w-[35px] flex items-center justify-center">
+            <i class="gg-shopping-cart"></i>
+          </span>
+          <span class="ml-3 whitespace-nowrap">Open Checkout</span>
+        </button>
+      </li-->
+    </ul>
+  </div>
+</aside>
+<script>
+  const paymentsMenus = document.querySelectorAll('[data-payment-method-menus]');
+  const getPaymentMethods = (target, selector) => {
+    let obj = {
+      methods: []
+    };
+    paymentsMenus.forEach(el => {
+      const data = el.getAttribute(selector);
+      if (data !== target) {
+        obj.methods = [...obj.methods, document.getElementById(data)];
+      } else {
+        obj.current = document.getElementById(data);
+      }
+    })
+    return obj
+  }
+
+  paymentsMenus.forEach(method => {
+    method.addEventListener('click', (el) => {
+      const target = method.getAttribute('data-payment-method-menus');
+      const targetElement = document.getElementById(target);
+      $('#response-panel').hide();
+      const obj = getPaymentMethods(target, 'data-payment-method-menus')
+
+      obj.methods.forEach(el => {
+        if (el) {
+          el.classList.add('hidden');
+        }
+      });
+      if (obj.current) {
+        obj.current.classList.remove('hidden');
+      }
+    });
+  });
+
+</script>
