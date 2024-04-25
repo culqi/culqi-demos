@@ -12,8 +12,9 @@ flowchart TD
 
   api[api-services]
   checkout[Checkout]
-  js-v4[Checkout JS-V4]
-  custom[Custom Checkout]
+  js-v4[Checkout JS-V4 with Culqi 3DS]
+  custom[Custom Checkout with Culqi 3DS]
+  soon[coming soon...]
   %% charge[Cargos]
   %% order[Ordenes]
   %% customer[Clientes]
@@ -23,6 +24,7 @@ flowchart TD
     Frameworks --> checkout
     checkout --> js-v4
     checkout --> custom
+    api --> soon
     %% api --> charge
     %% api --> order
     %% api --> customer
@@ -31,4 +33,11 @@ flowchart TD
   start --> Frameworks
 ```
 
-<!-- Aquí tienes algunos enlaces a los proyectos demo que corresponden a los componentes del diagrama: -->
+Aquí tienes algunos enlaces a los proyectos demo que corresponden a los componentes del diagrama:
+
+### PHP
+- [Demo Custom Checkout con Culqi 3DS](./php/checkout/custom-checkout-with-culqi3ds/README.md)
+- [Demo Checkout JSV4 con Culqi 3DS](./php/checkout/jsv4-with-culqi3ds/README.md)
+
+### JAVA
+- [DEMO Custom Checkout con Culqi 3DS](./java/checkout/custom-checkout-with-culqi3ds/README.md)
