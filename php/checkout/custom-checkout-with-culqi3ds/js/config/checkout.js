@@ -30,15 +30,16 @@ const culqiConfig = (jsonParams) => {
 
   const appearance = {
     buttonCardPayText: jsonParams.buttonTex, // texto que tomará el botón
+    //logo: 'https://culqi.com/LogoCulqi.png',
     defaultStyle: {
-      //logo: 'https://culqi.com/LogoCulqi.png',
       bannerColor: "", // hexadecimal
       buttonBackground: "", // hexadecimal
       menuColor: "", // hexadecimal
       linksColor: "", // hexadecimal
       buttonTextColor: "", // hexadecimal
       priceColor: "" // hexadecimal
-    }
+    },
+    rules: {} // reglas css
   };
 
   const config = {

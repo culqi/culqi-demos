@@ -51,10 +51,10 @@ export default Object.freeze({
 });
 
 export const customerInfo = {
-    firstName: "Fernando",
-    lastName: "Chullo",
+    firstName: "Dennis",
+    lastName: "Demo",
     address: "Coop. Villa el Sol",
-    phone: "945737476",
+    phone: "900000001",
 }
 ```
 
@@ -65,7 +65,7 @@ El proyecto se debe levantar con un servidor local(Ejemplo Xampp)
 
 Para poder visualizar el frontend de la demo ingresar a la siguiente URL:
 
-- Para probar cargos y órdenes: `http://localhost/culqi-php-demo-jsv4-culqi3ds`
+- Para probar cargos y órdenes: `http://localhost/jsv4-with-culqi3ds`
 
 
 ## Documentación

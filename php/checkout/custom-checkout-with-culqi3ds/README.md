@@ -1,6 +1,6 @@
-# DEMO - Culqi PHP + Checkout V4 + Culqi 3DS
+# DEMO - Culqi PHP + Custom Checkout + Culqi 3DS
 
-La demo integra Culqi PHP, Checkout V4 , Culqi 3DS y es compatible con la v2.0 del Culqi API, con esta demo podrás generar tokens, cargos, clientes, cards.
+La demo integra Culqi PHP, Custom Checkout, Culqi 3DS y es compatible con la v2.0 del Culqi API, con esta demo podrás generar tokens, cargos, clientes, cards.
 
 ## Requisitos
 
@@ -54,10 +54,10 @@ export default Object.freeze({
 });
 
 export const customerInfo = {
-    firstName: "Fernando",
-    lastName: "Chullo",
+    firstName: "Dennis",
+    lastName: "Demos",
     address: "Coop. Villa el Sol",
-    phone: "945737476",
+    phone: "900000001",
 }
 ```
 
@@ -68,8 +68,8 @@ El proyecto se debe levantar con un servidor local(Ejemplo Xampp)
 
 Para poder visualizar el frontend de la demo ingresar a la siguiente URL:
 
-- Para probar cargos: `http://localhost/culqi-php-demo-checkoutv4-culqi3ds`
-- Para probar creación de cards: `http://localhost/culqi-php-demo-checkoutv4-culqi3ds/index_card.php`
+- Para probar cargos: `http://localhost/custom-checkout-with-culqi3ds`
+- Para probar creación de cards: `http://localhost/custom-checkout-with-culqi3ds/index_card.php`
 
 
 ## Documentación
