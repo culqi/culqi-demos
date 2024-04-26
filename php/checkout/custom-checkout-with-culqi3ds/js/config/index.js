@@ -16,10 +16,10 @@ export const checkoutConfig = {
 };
 
 export const customerInfo = {
-  firstName: "Fernando",
-  lastName: "Chullo",
+  firstName: "Dennis",
+  lastName: "demo",
   address: "Coop. Villa el Sol",
   address_c: "Palo Alto",
-  phone: "945737476",
+  phone: "900000001",
   email: "review1" + Math.floor(Math.random() * 100) + "@culqi.com"
 };
