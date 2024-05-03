@@ -1,0 +1,3 @@
+Flask~=2.3.2
+culqi~=1.0.1
+setuptools~=65.5.1
