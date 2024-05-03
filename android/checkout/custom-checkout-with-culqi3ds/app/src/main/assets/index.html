@@ -1,0 +1,22 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>
+    This Text is shown with help of HTML.
+</h1>
+holaa
+<script type="text/javascript">
+getFromAndroid();
+alert("ola");
+function getFromAndroid() {
+    //var myVar =  Android.getOrderIdFromAndroid();
+    //alert(myVar);
+    var json =  JSON.parse(Android.sendParamsCustomCheckoutFromAndroid());
+    alert(json.amount);
+ }
+  </script>
+</body>
+</html>
