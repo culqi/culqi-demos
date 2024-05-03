@@ -1,43 +1,82 @@
-# Culqi-demos
-
-Este es el repositorio oficial de demos de Culqi. Aquí encontrarás ejemplos de integración con nuestras librerías de Checkout, 3DS y APIs en varios lenguajes de programación. Cada demo es un proyecto pequeño que muestra cómo integrar y utilizar nuestras librerías y servicios. Si eres desarrollador y estás buscando una forma rápida de entender cómo trabajar con Culqi, este repositorio es un excelente punto de partida. ¡Esperamos que te sea útil!
+# DEMO - Culqi Python + Checkout V4 + Culqi 3DS
 
 
-## Diagrama de Flujo de Integración
+La demo integra Culqi Python, Custom Checkout, Culqi 3DS. Es compatible con la versión 2.0 de la API de Culqi. Con esta demostración, podrás generar tokens, cargos, clientes y tarjetas.
 
-El siguiente diagrama de flujo proporciona una visión general de cómo se estructuran nuestros proyectos demo en términos de servicios de API, Checkout y otros componentes. Cada nodo en el diagrama representa un componente específico de un proyecto demo.
+## Requisitos
 
-```mermaid
-flowchart TD
+* Python 2.7 o superior
+* Afiliate [aquí](https://afiliate.culqi.com/).
 
-  api[api-services]
-  checkout[Checkout]
-  js-v4[Checkout JS-V4 \n with Culqi 3DS]
-  custom[Custom Checkout \n with Culqi 3DS]
-  soon[coming soon...]
-  %% charge[Cargos]
-  %% order[Ordenes]
-  %% customer[Clientes]
+* Si vas a realizar pruebas, obtén tus llaves desde [aquí](https://integ-panel.culqi.com/#/registro).
+* si vas a realizar transacciones reales obtén tus llaves desde [aquí](https://panel.culqi.com/#/registro) (1).
 
-  Frameworks[Languages / Frameworks]
-    Frameworks --> api
-    Frameworks --> checkout
-    checkout --> js-v4
-    checkout --> custom
-    api --> soon
-    %% api --> charge
-    %% api --> order
-    %% api --> customer
+> Para obtener tus llaves, debes ingresar a tu CulqiPanel > Desarrollo > ***API Keys***.
 
-  start[Culqi Demo]
-  start --> Frameworks
+![alt tag](http://i.imgur.com/NhE6mS9.png)
+
+> Las credenciales son enviadas al correo electrónico que registraste durante el proceso de afiliación.
+
+* Para encriptar el payload debes generar un id y llave RSA ingresando a CulqiPanel > Desarrollo > RSA Keys.
+
+## Instalación
+
+Ejecuta los siguientes comandos:
+
+```bash
+py -m pip install culqi-python-oficial
+py -m pip install flask
+py -m pip install flask_restful
+py -m pip install pycryptodome
+py -m pip install flask_cors
 ```
 
-Aquí tienes algunos enlaces a los proyectos demo que corresponden a los componentes del diagrama:
+## Configuración backend
 
-### PHP
-- [Demo Custom Checkout con Culqi 3DS](./php/checkout/custom-checkout-with-culqi3ds/README.md)
-- [Demo Checkout JSV4 con Culqi 3DS](./php/checkout/jsv4-with-culqi3ds/README.md)
+En el archivo **index.py** coloca tus llaves:
 
-### JAVA
-- [DEMO Custom Checkout con Culqi 3DS](./java/checkout/custom-checkout-with-culqi3ds/README.md)
+``` py
+public_key = "<<LLAVE PÚBLICA>>"
+private_key = "<<LLAVE PRIVADA>>"
+rsa_id = "<<RSA ID>>"
+rsa_public_key = ("<<LLAVE PúBLICA RSA>>")
+```
+
+## Configuración frontend
+
+Para configurar los datos del cargo, la llave pública del comercio, el ID de la llave RSA, la llave pública RSA y los datos del cliente, debes modificar el archivo `static/js/config/index.js`.
+
+```js
+export default Object.freeze({
+    TOTAL_AMOUNT: 600, // monto de pago,
+    CURRENCY: "PEN",// tipo de moneda,
+    PUBLIC_KEY: "<<LLAVE PÚBLICA>>", // llave publica del comercio (pk_test_xxxxx),
+    RSA_ID: "<<LLAVE PÚBLICA RSA ID>>", //Id de la llave RSA,
+    RSA_PUBLIC_KEY: "<<LLAVE PÚBLICA RSA>>", // Llave pública RSA que sirve para encriptar el payload de los servicios del checkout,
+    COUNTRY_CODE: "PE", // iso code del país
+});
+```
+
+## Inicialización de la demo
+
+Ejecuta el siguiente comando:
+
+```bash
+py index.py
+```
+
+## Prueba de la demo
+
+Para visualizar el frontend de la demo, ingresa a la siguiente URL:
+
+- Para probar cargos: `http://localhost:5100`
+
+## Documentación
+
+- [Referencia de Documentación](https://docs.culqi.com/)
+- [Referencia de API](https://apidocs.culqi.com/)
+
+
+# Puedes revisar más Demos en otros lenguajes:
+
+- [culqi-demos](https://github.com/culqi/culqi-demos)
