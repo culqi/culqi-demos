@@ -36,11 +36,11 @@ flowchart TD
 Aquí tienes algunos enlaces a los proyectos demo que corresponden a los componentes del diagrama:
 
 ### PHP
-- [Demo Custom Checkout con Culqi 3DS](./php/checkout/custom-checkout-with-culqi3ds/README.md)
-- [Demo Checkout JSV4 con Culqi 3DS](./php/checkout/jsv4-with-culqi3ds/README.md)
+- [Demo Custom Checkout con Culqi 3DS](https://github.com/culqi/culqi-demos/tree/feature/demo-php/php/checkout/custom-checkout-with-culqi3ds/README.md)
+- [Demo Checkout JSV4 con Culqi 3DS](https://github.com/culqi/culqi-demos/tree/feature/demo-php/php/checkout/jsv4-with-culqi3ds/README.md)
 
 ### JAVA
-- [DEMO Custom Checkout con Culqi 3DS](./java/checkout/custom-checkout-with-culqi3ds/README.md)
+- [DEMO Custom Checkout con Culqi 3DS](https://github.com/culqi/culqi-demos/tree/feature/demo-java/java/checkout/custom-checkout-with-culqi3ds/README.md)
 
 ### PYTHON
 - [DEMO Custom Checkout con Culqi 3DS](https://github.com/culqi/culqi-demos/tree/feature/demo-python/python/checkout/custom-checkout-with-culqi3ds/README.md)
