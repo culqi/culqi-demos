@@ -1,1 +1,16 @@
-**/node_modules/*
+.*
+!.coveragerc
+!.gitignore
+!.isort.cfg
+!.pre-commit-config.yaml
+!.pylintrc
+!.travis.yml
+*.py[cod]
+*.ipynb*
+*.egg*
+coverage.*
+cassettes
+legacy
+build
+dist
+__pycache__
