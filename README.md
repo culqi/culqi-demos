@@ -76,7 +76,8 @@ Para visualizar el frontend de la demo, ingresa a la siguiente URL:
 - [Referencia de Documentación](https://docs.culqi.com/)
 - [Referencia de API](https://apidocs.culqi.com/)
 
+---
 
-# Puedes revisar más Demos en otros lenguajes:
-
-- [culqi-demos](https://github.com/culqi/culqi-demos)
+> **Explora más demos en otros lenguajes de programación:**
+>
+> - Visita nuestro repositorio [culqi-demos](https://github.com/culqi/culqi-demos) para encontrar una variedad de ejemplos en diferentes lenguajes.
