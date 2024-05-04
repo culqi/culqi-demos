@@ -1,0 +1,33 @@
+{
+    "name": "culqi/php-demo",
+    "description": "Cliente Culqi API para PHP",
+    "keywords": [
+        "culqi",
+        "client",
+        "api",
+        "peru",
+        "php",
+        "payments",
+        "pagos"
+    ],
+    "homepage": "https://culqi.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dennis Villagaray",
+            "homepage": "https://github.com/dennisvillagaray",
+            "email": "dennis.villagarayg@gmail.com"
+        },
+        {
+            "name": "Culqi and contributors",
+            "homepage": "https://github.com/culqi/culqi-php/contributors"
+        }
+    ],
+    "require": {
+        "culqi/culqi-php": "1.5.2",
+        "rmccue/requests": "1.7.0"
+    },
+    "autoload": {
+        "classmap": ["vendor/culqi/culqi-php/lib/Culqi/"]
+    }
+}
