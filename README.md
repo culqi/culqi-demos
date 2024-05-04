@@ -1,43 +1,78 @@
-# Culqi-demos
+# DEMO - Culqi PHP + Custom Checkout + Culqi 3DS
 
-Este es el repositorio oficial de demos de Culqi. Aquí encontrarás ejemplos de integración con nuestras librerías de Checkout, 3DS y APIs en varios lenguajes de programación. Cada demo es un proyecto pequeño que muestra cómo integrar y utilizar nuestras librerías y servicios. Si eres desarrollador y estás buscando una forma rápida de entender cómo trabajar con Culqi, este repositorio es un excelente punto de partida. ¡Esperamos que te sea útil!
+La demo integra Culqi PHP, Custom Checkout, Culqi 3DS. Es compatible con la versión 2.0 de la API de Culqi. Con esta demostración, podrás generar tokens, cargos, clientes y tarjetas.
 
+## Requisitos
 
-## Diagrama de Flujo de Integración
+* PHP 7.0 o superior
+* Afiliate [aquí](https://afiliate.culqi.com/).
 
-El siguiente diagrama de flujo proporciona una visión general de cómo se estructuran nuestros proyectos demo en términos de servicios de API, Checkout y otros componentes. Cada nodo en el diagrama representa un componente específico de un proyecto demo.
+* Si vas a realizar pruebas, obtén tus llaves desde [aquí](https://integ-panel.culqi.com/#/registro).
+* si vas a realizar transacciones reales obtén tus llaves desde [aquí](https://panel.culqi.com/#/registro) (1).
 
-```mermaid
-flowchart TD
+> Para obtener tus llaves, debes ingresar a tu CulqiPanel > Desarrollo > ***API Keys***.
 
-  api[api-services]
-  checkout[Checkout]
-  js-v4[Checkout JS-V4 \n with Culqi 3DS]
-  custom[Custom Checkout \n with Culqi 3DS]
-  soon[coming soon...]
-  %% charge[Cargos]
-  %% order[Ordenes]
-  %% customer[Clientes]
+![alt tag](http://i.imgur.com/NhE6mS9.png)
 
-  Frameworks[Languages / Frameworks]
-    Frameworks --> api
-    Frameworks --> checkout
-    checkout --> js-v4
-    checkout --> custom
-    api --> soon
-    %% api --> charge
-    %% api --> order
-    %% api --> customer
+> Las credenciales son enviadas al correo electrónico que registraste durante el proceso de afiliación.
 
-  start[Culqi Demo]
-  start --> Frameworks
+* Para encriptar el payload debes generar un id y llave RSA ingresando a CulqiPanel > Desarrollo > RSA Keys.c
+
+## Instalación
+
+Para la instalación de la librería de Culqi se debe ejecutar el siguiente comando en la raiz del proyecto.
+
+```bash
+composer require culqi/culqi-php
 ```
 
-Aquí tienes algunos enlaces a los proyectos demo que corresponden a los componentes del diagrama:
+Esto generará una carpeta **vendor** donde se encuentra la librería **culqi-php**.
 
-### PHP
-- [Demo Custom Checkout con Culqi 3DS](./php/checkout/custom-checkout-with-culqi3ds/README.md)
-- [Demo Checkout JSV4 con Culqi 3DS](./php/checkout/jsv4-with-culqi3ds/README.md)
+## Configuración backend
 
-### JAVA
-- [DEMO Custom Checkout con Culqi 3DS](./java/checkout/custom-checkout-with-culqi3ds/README.md)
+Primero se tiene que modificar los valores del archivo `settings.php` que se encuentra en la raíz del proyecto. A continuación un ejemplo.
+Puedes activar la encriptación o desactivarla.
+
+```
+define('PUBLIC_KEY', 'Llave pública del comercio (pk_test_xxxxxxxxx)');
+define('SECRET_KEY', "Llave secreta del comercio (sk_test_xxxxxxxxx)");
+define('RSA_ID', 'Id de la llave RSA');
+define('RSA_PUBLIC_KEY', 'Llave pública RSA que sirve para encriptar el payload de los servicios');
+```
+## Configuración frontend
+
+Para configurar los datos del cargo, pk del comercio y datos del cliente se tiene que modificar en el archivo `/js/config/index.js`.
+Puedes activar la encriptación o desactivarla.
+
+```js
+export default Object.freeze({
+    TOTAL_AMOUNT: 600, // monto de pago,
+    CURRENCY: "PEN",// tipo de moneda,
+    PUBLIC_KEY: "<<LLAVE PÚBLICA>>", // llave publica del comercio (pk_test_xxxxx),
+    RSA_ID: "<<LLAVE PÚBLICA RSA ID>>", //Id de la llave RSA,
+    RSA_PUBLIC_KEY: "<<LLAVE PÚBLICA RSA>>", // Llave pública RSA que sirve para encriptar el payload de los servicios del checkout,
+    COUNTRY_CODE: "PE", // iso code del país
+    ACTIVE_ENCRYPT: true (true = encyptación activada , false = encyptación inactivada)
+});
+```
+
+## Inicialización de la demo
+El proyecto se debe levantar con un servidor local(Ejemplo Xampp)
+
+## Prueba de la demo
+
+Para visualizar el frontend de la demo, ingresa a la siguiente URL:
+
+- Para probar cargos: `http://localhost/culqi-demos`
+
+
+## Documentación
+
+- [Referencia de Documentación](https://docs.culqi.com/)
+- [Referencia de API](https://apidocs.culqi.com/)
+
+---
+
+> **Explora más demos en otros lenguajes de programación:**
+>
+> - Visita nuestro repositorio [culqi-demos](https://github.com/culqi/culqi-demos) para encontrar una variedad de ejemplos en diferentes lenguajes.
