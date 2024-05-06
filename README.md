@@ -1,43 +1,90 @@
-# Culqi-demos
+# DEMO - Culqi Java + Checkout V4 + Culqi 3DS
 
-Este es el repositorio oficial de demos de Culqi. Aquí encontrarás ejemplos de integración con nuestras librerías de Checkout, 3DS y APIs en varios lenguajes de programación. Cada demo es un proyecto pequeño que muestra cómo integrar y utilizar nuestras librerías y servicios. Si eres desarrollador y estás buscando una forma rápida de entender cómo trabajar con Culqi, este repositorio es un excelente punto de partida. ¡Esperamos que te sea útil!
+La demo integra Culqi Java, Checkout V4 , Culqi 3DS y es compatible con la v2.0 del Culqi API, con esta demo podrás generar tokens, cargos, clientes, cards.
 
+## Requisitos
 
-## Diagrama de Flujo de Integración
+* Java 1.8 o superior
+* Afiliate [aquí](https://afiliate.culqi.com/).
+* Si vas a realizar pruebas, obtén tus llaves desde [aquí](https://integ-panel.culqi.com/#/registro).
+* Si vas a realizar transacciones reales obtén tus llaves desde [aquí](https://mipanel.culqi.com).
 
-El siguiente diagrama de flujo proporciona una visión general de cómo se estructuran nuestros proyectos demo en términos de servicios de API, Checkout y otros componentes. Cada nodo en el diagrama representa un componente específico de un proyecto demo.
+> Para obtener tus llaves, debes ingresar a tu CulqiPanel > Desarrollo > ***API Keys***.
 
-```mermaid
-flowchart TD
+![alt tag](http://i.imgur.com/NhE6mS9.png)
 
-  api[api-services]
-  checkout[Checkout]
-  js-v4[Checkout JS-V4 \n with Culqi 3DS]
-  custom[Custom Checkout \n with Culqi 3DS]
-  soon[coming soon...]
-  %% charge[Cargos]
-  %% order[Ordenes]
-  %% customer[Clientes]
+> Las credenciales son enviadas al correo electrónico que registraste durante el proceso de afiliación.
 
-  Frameworks[Languages / Frameworks]
-    Frameworks --> api
-    Frameworks --> checkout
-    checkout --> js-v4
-    checkout --> custom
-    api --> soon
-    %% api --> charge
-    %% api --> order
-    %% api --> customer
+* Para encriptar el payload debes generar un id y llave RSA ingresando a CulqiPanel > Desarrollo > RSA Keys.
 
-  start[Culqi Demo]
-  start --> Frameworks
+## Instalación
+
+Agregar la siguientes configuraciones al archivo `pom.xml` del proyecto
+
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
 ```
 
-Aquí tienes algunos enlaces a los proyectos demo que corresponden a los componentes del diagrama:
+```xml
+<dependency>
+	<groupId>com.github.culqi</groupId>
+	<artifactId>culqi-java</artifactId>
+	<version>2.0.2</version>
+</dependency>
+```
 
-### PHP
-- [Demo Custom Checkout con Culqi 3DS](./php/checkout/custom-checkout-with-culqi3ds/README.md)
-- [Demo Checkout JSV4 con Culqi 3DS](./php/checkout/jsv4-with-culqi3ds/README.md)
+## Configuración backend
 
-### JAVA
-- [DEMO Custom Checkout con Culqi 3DS](./java/checkout/custom-checkout-with-culqi3ds/README.md)
+En el archivo `application.properties` que se encuentra en `src/resource/` coloca tus llaves:
+
+```properties
+app.culqi.public-key = <<LLAVE PÚBLICA>> # Llave pública del comercio (pk_test_xxxxxxxxx)
+app.culqi.secret-key = <<LLAVE PRIVADA>> # Llave secreta del comercio (sk_test_xxxxxxxxx)
+app.culqi.rsa-id = <<RSA ID>> # Id de la llave RSA
+app.culqi.rsa-public-key = <<LLAVE PúBLICA RSA>> # Llave pública RSA que sirve para encriptar el payload de los servicios
+```
+## Configuración frontend
+
+Para configurar los datos del cargo, la llave pública del comercio, el ID de la llave RSA, la llave pública RSA y los datos del cliente, debes modificar el archivo `src/resources/public/js/config/index.js`.
+
+```js
+export default Object.freeze({
+    TOTAL_AMOUNT: 600, // monto de pago,
+    CURRENCY: "PEN",// tipo de moneda,
+    PUBLIC_KEY: "<<LLAVE PÚBLICA>>", // llave publica del comercio (pk_test_xxxxx),
+    RSA_ID: "<<LLAVE PÚBLICA RSA ID>>", //Id de la llave RSA,
+    RSA_PUBLIC_KEY: "<<LLAVE PÚBLICA RSA>>", // Llave pública RSA que sirve para encriptar el payload de los servicios del checkout,
+    COUNTRY_CODE: "PE", // iso code del país
+});
+```
+
+## Inicialización de la demo
+
+Abrir la terminal (Bash/CMD) y ubicarse dentro del proyecto para ejecutar los siguientes comandos.
+
+```bash
+mvn clean package
+mvn spring-boot:run
+```
+
+## Prueba de la demo
+
+Para visualizar el frontend de la demo, ingresa a la siguiente URL:
+
+- Para probar cargos:`http://localhost:8080`
+
+## Documentación
+
+- [Referencia de Documentación](https://docs.culqi.com/)
+- [Referencia de API](https://apidocs.culqi.com/)
+
+---
+
+> **Explora más demos en otros lenguajes de programación:**
+>
+> - Visita nuestro repositorio [culqi-demos](https://github.com/culqi/culqi-demos/?tab=readme-ov-file#lenguajes-de-programación) para encontrar una variedad de ejemplos en diferentes lenguajes.
