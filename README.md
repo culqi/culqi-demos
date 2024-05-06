@@ -1,6 +1,6 @@
-# DEMO - Culqi Java + Checkout V4 + Culqi 3DS
+# DEMO - Culqi Java + Custom Checkout + Culqi 3DS
 
-La demo integra Culqi Java, Checkout V4 , Culqi 3DS y es compatible con la v2.0 del Culqi API, con esta demo podrás generar tokens, cargos, clientes, cards.
+La demo integra Culqi Java, Custom Checkout, Culqi 3DS y es compatible con la v2.0 del Culqi API, con esta demo podrás generar tokens, cargos, clientes, cards.
 
 ## Requisitos
 
@@ -32,7 +32,7 @@ Agregar la siguientes configuraciones al archivo `pom.xml` del proyecto
 
 ```xml
 <dependency>
-	<groupId>com.github.culqi</groupId>
+    <groupId>com.github.culqi</groupId>
 	<artifactId>culqi-java</artifactId>
 	<version>2.0.2</version>
 </dependency>
