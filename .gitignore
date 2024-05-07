@@ -1,1 +1,8 @@
-**/node_modules/*
+
+*.timestamp
+
+target/debug/.fingerprint/cc-b8278d7914631ef9/
+
+target/
+
+.idea/
