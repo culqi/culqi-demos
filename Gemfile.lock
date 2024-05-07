@@ -1,0 +1,21 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    culqi-ruby-oficial (1.0.0)
+    excon (0.102.0)
+    openssl-oaep (0.1.0)
+    webrick (1.4.4)
+
+PLATFORMS
+  x86_64-darwin-22
+  x86_64-darwin-23
+  x86_64-linux
+
+DEPENDENCIES
+  culqi-ruby-oficial
+  excon
+  openssl-oaep (= 0.1.0)
+  webrick (= 1.4.4)
+
+BUNDLED WITH
+   2.4.17
