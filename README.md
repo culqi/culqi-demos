@@ -1,43 +1,77 @@
-# Culqi-demos
+# DEMO - Culqi RUST + Checkout V4 + Culqi 3DS
 
-Este es el repositorio oficial de demos de Culqi. Aquí encontrarás ejemplos de integración con nuestras librerías de Checkout, 3DS y APIs en varios lenguajes de programación. Cada demo es un proyecto pequeño que muestra cómo integrar y utilizar nuestras librerías y servicios. Si eres desarrollador y estás buscando una forma rápida de entender cómo trabajar con Culqi, este repositorio es un excelente punto de partida. ¡Esperamos que te sea útil!
+La demo integra Culqi RUST, Custom Checkout, Culqi 3DS y es compatible con la v2.0 del Culqi API, con esta demo podrás generar tokens, cargos, clientes y tarjetas.
 
+## Requisitos
 
-## Diagrama de Flujo de Integración
+- Rust 1.60.0+
+- Afiliate [aquí](https://afiliate.culqi.com/).
+- Si vas a realizar pruebas obtén tus llaves desde [aquí](https://integ-panel.culqi.com/#/registro), si vas a realizar transacciones reales obtén tus llaves desde [aquí](https://mipanel.culqi.com/#/registro).
 
-El siguiente diagrama de flujo proporciona una visión general de cómo se estructuran nuestros proyectos demo en términos de servicios de API, Checkout y otros componentes. Cada nodo en el diagrama representa un componente específico de un proyecto demo.
+> Recuerda que para obtener tus llaves debes ingresar a tu CulqiPanel > Desarrollo > ***API Keys***.
 
-```mermaid
-flowchart TD
+![alt tag](http://i.imgur.com/NhE6mS9.png)
 
-  api[api-services]
-  checkout[Checkout]
-  js-v4[Checkout JS-V4 \n with Culqi 3DS]
-  custom[Custom Checkout \n with Culqi 3DS]
-  soon[coming soon...]
-  %% charge[Cargos]
-  %% order[Ordenes]
-  %% customer[Clientes]
+> Recuerda que las credenciales son enviadas al correo que registraste en el proceso de afiliación.
 
-  Frameworks[Languages / Frameworks]
-    Frameworks --> api
-    Frameworks --> checkout
-    checkout --> js-v4
-    checkout --> custom
-    api --> soon
-    %% api --> charge
-    %% api --> order
-    %% api --> customer
+* Para encriptar el payload debes generar un id y llave RSA  ingresando a CulqiPanel > Desarrollo  > RSA Keys.
 
-  start[Culqi Demo]
-  start --> Frameworks
+## Instalación
+
+Ejecuta los siguientes comandos:
+
+```bash
+cargo build
 ```
 
-Aquí tienes algunos enlaces a los proyectos demo que corresponden a los componentes del diagrama:
+## Configuración backend
 
-### PHP
-- [Demo Custom Checkout con Culqi 3DS](./php/checkout/custom-checkout-with-culqi3ds/README.md)
-- [Demo Checkout JSV4 con Culqi 3DS](./php/checkout/jsv4-with-culqi3ds/README.md)
+En el archivo **src/main.rs** configura tus llaves:
 
-### JAVA
-- [DEMO Custom Checkout con Culqi 3DS](./java/checkout/custom-checkout-with-culqi3ds/README.md)
+```rust
+let SKEY: &str = "Llave pública del comercio (pk_test_xxxxxxxxx)";
+let PKEY: &str = "Llave secreta del comercio (sk_test_xxxxxxxxx)";
+let RSAID: &str = "Id de la llave RSA";
+let CULQI_RSA_KEY: &str = "Llave pública RSA que sirve para encriptar el payload de los servicios";
+```
+Nota: Cambiar los valores de las variables en cada método según corresponda.
+
+
+## Configuración frontend
+Para configurar los datos del cargo, pk del comercio, rsa_id, rsa_public_key y datos del cliente se tiene que modificar en el archivo `static/js/config/index.js`.
+
+```js
+export default Object.freeze({
+  TOTAL_AMOUNT: 600,
+  CURRENCY: "PEN",
+  PUBLIC_KEY: "Llave pública del comercio (pk_test_xxxxxxxxx)",
+  COUNTRY_CODE: "PE",
+  RSA_ID: "Id de la llave RSA",
+  RSA_PUBLIC_KEY: 'Llave pública RSA que sirve para encriptar el payload de los servicios',
+});
+```
+
+## Inicializar la demo
+Ejecutar el siguiente comando:
+
+```bash
+cargo run
+```
+
+## Probar la demo
+
+Para poder visualizar el frontend de la demo ingresar a la siguiente URL:
+
+- Para probar cargos: http://localhost:3030/index.html
+- Para probar creación de cards: http://localhost:3030/index_card.html
+
+## Documentación
+
+- [Referencia de Documentación](https://docs.culqi.com/)
+- [Referencia de API](https://apidocs.culqi.com/)
+
+---
+
+> **Explora más demos en otros lenguajes de programación:**
+>
+> - Visita nuestro repositorio [culqi-demos](https://github.com/culqi/culqi-demos) para encontrar una variedad de ejemplos en diferentes lenguajes.
