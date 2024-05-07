@@ -1,4 +1,4 @@
-# DEMO - Culqi RUST + Checkout V4 + Culqi 3DS
+# DEMO - Culqi RUST + Custom Checkout + Culqi 3DS
 
 La demo integra Culqi RUST, Custom Checkout, Culqi 3DS y es compatible con la v2.0 del Culqi API, con esta demo podrás generar tokens, cargos, clientes y tarjetas.
 
