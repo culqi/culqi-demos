@@ -1,0 +1,43 @@
+{
+  "name": "culqi-demos",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "author": {
+    "name": "Dennis Villagaray",
+    "email": "dennis.villagarayg@gmail.com",
+    "url": "https://github.com/dennisvillagaray"
+  },
+  "contributors": [
+    {
+      "name": "Culqi and contributors",
+      "homepage": "https://github.com/culqi/culqi-demos/contributors",
+      "url": "https://github.com/culqi"
+    }
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "6.23.0",
+    "axios": "^1.6.8"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "vite": "^5.2.11"
+  }
+}
