@@ -8,19 +8,22 @@ const getEpochSeconds = () => {
   return Math.floor(currentDate.getTime() / 1000);
 };
 
-const generateOrderRequest = (epochSeconds) => ({
-  amount: checkoutConfig.TOTAL_AMOUNT,
-  currency_code: checkoutConfig.CURRENCY,
-  description: "Venta de prueba",
-  order_number: `pedido-${new Date().getTime()}`,
-  client_details: {
-    first_name: customerInfo.firstName,
-    last_name: customerInfo.lastName,
-    email: customerInfo.email,
-    phone_number: customerInfo.phone
-  },
-  expiration_date: epochSeconds
-});
+const generateOrderRequest = (epochSeconds) => {
+  const customer = customerInfo(getEpochSeconds());
+  return {
+    amount: checkoutConfig.TOTAL_AMOUNT,
+    currency_code: checkoutConfig.CURRENCY,
+    description: "Venta de prueba",
+    order_number: `pedido-${new Date().getTime()}`,
+    client_details: {
+      first_name: customer.firstName,
+      last_name: customer.lastName,
+      email: customer.email,
+      phone_number: customer.phone
+    },
+    expiration_date: epochSeconds
+  };
+};
 
 export const createOrder = async () => {
   const epochSeconds = getEpochSeconds();
@@ -33,19 +36,22 @@ export const createOrder = async () => {
   return { data, status };
 };
 
-const generateChargeRequest = ({ email, tokenId, deviceId }) => ({
-  amount: checkoutConfig.TOTAL_AMOUNT,
-  currency_code: checkoutConfig.CURRENCY,
-  email: email,
-  source_id: tokenId,
-  antifraud_details: {
-    first_name: customerInfo.firstName,
-    last_name: customerInfo.lastName,
-    email: customerInfo.email,
-    phone_number: customerInfo.phone,
-    device_finger_print_id: deviceId
-  }
-});
+const generateChargeRequest = ({ email, tokenId, deviceId }) => {
+  const customer = customerInfo(getEpochSeconds());
+  return {
+    amount: checkoutConfig.TOTAL_AMOUNT,
+    currency_code: checkoutConfig.CURRENCY,
+    email: email,
+    source_id: tokenId,
+    antifraud_details: {
+      first_name: customer.firstName,
+      last_name: customer.lastName,
+      email: customer.email,
+      phone_number: customer.phone,
+      device_finger_print_id: deviceId
+    }
+  };
+};
 
 export const createCharge = async ({
   email,

@@ -13,16 +13,18 @@ import ButtonComp from "../components/ButtonComp";
 const publicKey = import.meta.env.VITE_APP_CULQI_PUBLICKEY;
 
 const WithCard = () => {
-  const CulqiCheckout = useRef(null);
+  const [CulqiCheckout, setCulqiCheckout] = useState(null);
+
   const Culqi3DS = useRef(null);
 
-  const [decive3DS, setDevice3DS] = useState(null);
-
-  const [tokenId, setTokenId] = useState(null);
-
-  const [tokenEmail, setTokenEmail] = useState(null);
-
   const [removeMessageListener, setRemoveMessageListener] = useState(() => {});
+
+  const isFirstRunOrderService = useRef(true); // Variable de referencia para rastrear la primera ejecución
+
+  const decive3DS = useRef(null);
+  const orderId = useRef(null);
+  const tokenId = useRef(null);
+  const tokenEmail = useRef(null);
 
   const [cardMessage, setCardMessage] = useState(null);
 
@@ -48,10 +50,8 @@ const WithCard = () => {
       parameters3DS
     });
 
-    if (status === 201) {
-      if (data === "charge") {
-        setCardMessage("OPERACIÓN REALIZADA EXITOSAMENTE");
-      }
+    if (status === 201 && data.object === "charge") {
+      setChargeMessage("OPERACIÓN REALIZADA EXITOSAMENTE CON 3DS");
     }
     Culqi3DS.current.reset();
   };
@@ -98,8 +98,8 @@ const WithCard = () => {
 
   // Function to handle Culqi token
   const handleCulqiToken = async () => {
-    const token = CulqiCheckout.current.getToken();
-    const error = CulqiCheckout.current.getError();
+    const token = CulqiCheckout.getToken();
+    const error = CulqiCheckout.getError();
     if (error) {
       console.log("ERROR - ERROR: ", error);
       alert(error.user_message);
@@ -108,36 +108,16 @@ const WithCard = () => {
     if (!token) {
       return;
     }
-    setTokenId(token.id);
-    setTokenEmail(token.email);
+    tokenId.current = token.id;
+    tokenEmail.current = token.email;
 
-    CulqiCheckout.current.close();
+    CulqiCheckout.close();
     const { data, status } = await createCard({
       customerId: customerId,
       tokenId: token.id,
-      deviceId: decive3DS
+      deviceId: decive3DS.current
     });
     handleResponse(token.id, token.email, status, data);
-  };
-
-  const openCheckout = async () => {
-    const config = await culqiConfig({
-      installments: false,
-      orderId: "",
-      buttonTex: "Guardar Tarjeta",
-      amount: 0
-    });
-
-    CulqiCheckout.current = new culqiCustomCheckout(publicKey, config);
-    CulqiCheckout.current
-      .open()
-      .then(async () => {
-        CulqiCheckout.current.culqiFunction = handleCulqiToken;
-        CulqiCheckout.current.closeCheckoutFunction = () => {};
-      })
-      .catch((err) => {
-        console.log("falló al abrir checkout");
-      });
   };
 
   const handleSetData = async () => {
@@ -175,10 +155,10 @@ const WithCard = () => {
           .then(async () => {
             console.log("3DS GENERADO");
             const device = await Culqi3DS.current.getDevice();
-            setDevice3DS(device);
+            decive3DS.current = device;
           })
           .catch((err) => {
-            console.log("errrorr 3DS:: ", err);
+            console.log("error 3DS:: ", err);
           });
       }
     };
@@ -202,6 +182,32 @@ const WithCard = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleCulqiCheckout = async () => {
+      const config = await culqiConfig({
+        installments: false,
+        orderId: "",
+        buttonTex: "Guardar Tarjeta",
+        amount: 0
+      });
+      setCulqiCheckout(new culqiCustomCheckout(publicKey, config));
+    };
+
+    handleCulqiCheckout();
+  }, []);
+
+  const openCheckout = async () => {
+    CulqiCheckout.open()
+      .then(async () => {
+        CulqiCheckout.culqiFunction = handleCulqiToken;
+        CulqiCheckout.closeCheckoutFunction = () => {
+          console.log("cerrando...");
+        };
+      })
+      .catch((err) => {
+        console.log("falló al abrir checkout");
+      });
+  };
   return (
     <div
       className="flex flex-col items-center w-full place-content-center"
