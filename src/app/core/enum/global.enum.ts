@@ -1,0 +1,5 @@
+export enum CULQI3DS_RESULT {
+  ERROR = 0,
+  INIT_AUTH = 1,
+  SUCCES_WITH_3DS = 2,
+}
