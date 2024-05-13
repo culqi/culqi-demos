@@ -1,0 +1,23 @@
+<div class="w-full h-full flex">
+  <div
+    class="max-w-7xl mt-10 mx-auto w-full flex flex-col sm:flex-row flex-grow overflow-hidden"
+  >
+    <app-sidebar></app-sidebar>
+    <div
+      class="w-full p-6 px-6 grid grid-cols-1 gap-4 place-content-center place-items-center"
+    >
+      <h1 class="my-6 text-xl font-bold text-center">PYTHON DEMO</h1>
+      <h2 class="text-xl font-bold text-purple-800">CULQI - CUSTOM CHECKOUT</h2>
+
+      <router-outlet></router-outlet>
+
+      <div class="mt-20">
+        <app-button
+          [text]="'Reiniciar'"
+          [type]="'primary'"
+          (onClick)="reset()"
+        ></app-button>
+      </div>
+    </div>
+  </div>
+</div>

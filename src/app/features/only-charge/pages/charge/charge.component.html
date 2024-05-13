@@ -1,0 +1,20 @@
+<div
+  id="only-charge"
+  data-mode-content="only-charge"
+  class="flex flex-col items-center w-full place-content-center"
+>
+  <p class="text-lg font-semibold">(Cargo + 3DS)</p>
+  <div class="flex flex-col mt-10">
+    <button
+      (click)="openCheckout()"
+      class="px-5 py-2 text-sm font-semibold leading-5 text-white bg-purple-500 rounded-full hover:bg-purple-700"
+      id="crearCharge"
+    >
+      Crear Cargo
+    </button>
+    <div class="flex w-full mt-10 min-w-[200px] justify-start">
+      <span class="mr-10">Respuesta: {{ chargeMessage }} </span>
+      <p id="cardResponse"></p>
+    </div>
+  </div>
+</div>
