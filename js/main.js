@@ -81,16 +81,14 @@ const handledContentLoad = async () => {
 
     console.log("Status code: ", statusCode);
 
-    if (statusCode === 201) {
+    if (statusCode === 201 || statusCode === 200) {
       if (objResponse === "charge" || objResponse === "card") {
         selectors.cardResponseList.forEach((el) => {
           el.innerHTML = "OPERACIÓN REALIZADA EXITOSAMENTE";
         });
       }
-      Culqi3DS.reset();
-    } else {
-      Culqi3DS.reset();
     }
+    Culqi3DS.reset();
   }
 
   // Event listener for message event
@@ -121,7 +119,11 @@ const handledContentLoad = async () => {
       case 200:
         if (objResponse.action_code === "REVIEW") {
           validationInit3DS({ email, statusCode, tokenId });
-          return;
+          break;
+        }
+        if (objResponse.object === "charge") {
+          message = "OPERACIÓN EXITOSA - SIN 3DS";
+          break;
         }
         message = "ERROR AL REALIZAR LA OPERACIÓN";
         break;
@@ -265,7 +267,6 @@ const handledContentLoad = async () => {
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
-  console.log('holaaa')
   await handledContentLoad();
 
   const reset = document.getElementById("reset");
