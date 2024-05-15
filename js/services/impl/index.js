@@ -36,7 +36,7 @@ export const generateChargeImpl = async ({
     amount: checkoutConfig.TOTAL_AMOUNT,
     currency_code: checkoutConfig.CURRENCY,
     email: email,
-    source_id: tokenId,
+    token: tokenId,
     antifraud_details: {
       first_name: customerInfo.firstName,
       last_name: customerInfo.lastName,
