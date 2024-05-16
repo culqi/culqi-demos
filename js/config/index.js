@@ -6,7 +6,8 @@ export const checkoutConfig = Object.freeze({
   COUNTRY_CODE: "PE",
   RSA_ID: "<<RSA ID>>",
   RSA_PUBLIC_KEY: "<<LLAVE PúBLICA RSA>>",
-  URL_BASE: "http://localhost/culqi-demos"
+  ACTIVE_ENCRYPT: false,
+  URL_BASE: "http://localhost/culqi-demos-Php-checkout-charge"
 });
 
 export const customerInfo = {
