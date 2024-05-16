@@ -6,8 +6,7 @@
 
 try {
   // Usando Composer (o puedes incluir las dependencias manualmente)
-  include_once dirname(__FILE__) . '/../vendor/rmccue/requests/library/Requests.php';
-  Requests::register_autoloader();
+  include_once dirname(__FILE__) . '/../vendor/autoload.php';
   include_once dirname(__FILE__) . '/../vendor/culqi/culqi-php/lib/culqi.php';
   include_once '../settings.php';
 
