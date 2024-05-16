@@ -42,7 +42,7 @@ export const generateChargeImpl = async ({
       last_name: customerInfo.lastName,
       email: customerInfo.email,
       phone_number: customerInfo.phone,
-      device_finger_print_id: deviceId
+      deviceId
     }
   };
   return service.generateCharge(
