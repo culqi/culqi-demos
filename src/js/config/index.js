@@ -2,7 +2,7 @@
 export const checkoutConfig = Object.freeze({
   TOTAL_AMOUNT: 600,
   CURRENCY: "PEN",
-  PUBLIC_KEY: "<<LLAVE PÚBLICA>>",
+  PUBLIC_KEY: "pk_test_e94078b9b248675d",
   COUNTRY_CODE: "PE",
   RSA_ID: "<<LLAVE PÚBLICA RSA ID>>",
   RSA_PUBLIC_KEY: "<<LLAVE PÚBLICA RSA>>",

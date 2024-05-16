@@ -7,10 +7,10 @@ import (
 )
 
 const (
-	Publickey     = "<<LLAVE PÚBLICA>>"
-	Secretkey     = "<<LLAVE SECRETA>>"
-	rsaID         = "<<LLAVE PÚBLICA RSA ID>>"
-	rsaPublicKey  = "<<LLAVE PÚBLICA RSA>>"
+	Publickey     = "pk_test_e94078b9b248675d"
+	Secretkey     = "sk_test_c2267b5b262745f0"
+	rsaID         = "a"
+	rsaPublicKey  = "a"
 	Port          = ":3000"
 	Encrypt       = "0"
 	encryptionFmt = `{
