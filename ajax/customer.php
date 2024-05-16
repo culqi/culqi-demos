@@ -16,13 +16,13 @@ try {
   $customer = $culqi->Customers->create(
     array(
       "address" => $_POST["address"],
-      "address_city" => $_POST["address_c"],
-      "country_code" => $_POST["country"],
+      "address_city" => $_POST["address_city"],
+      "country_code" => $_POST["country_code"],
       "email" => $_POST["email"],
-      "first_name" => $_POST["f_name"],
-      "last_name" => $_POST["l_name"],
+      "first_name" => $_POST["first_name"],
+      "last_name" => $_POST["last_name"],
       "metadata" => array("test" => "test"),
-      "phone_number" => $_POST["phone"]
+      "phone_number" => $_POST["phone_number"]
     )
   );
 
