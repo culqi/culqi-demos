@@ -2,11 +2,12 @@
 export const checkoutConfig = Object.freeze({
   TOTAL_AMOUNT: 600,
   CURRENCY: "PEN",
-  PUBLIC_KEY: "<<LLAVE PÚBLICA>>",
+  PUBLIC_KEY: "INSERTE_SU_LLAVE_PUBLICA",
   COUNTRY_CODE: "PE",
-  RSA_ID: "<<RSA ID>>",
-  RSA_PUBLIC_KEY: "<<LLAVE PúBLICA RSA>>",
-  URL_BASE: "http://localhost/culqi-demos"
+  RSA_ID: "INSERTE_SU_RSA_ID",
+  RSA_PUBLIC_KEY:
+    "INSERTE_SU_LLAVE_RSA",
+  URL_BASE: "http://localhost:3000"
 });
 
 export const customerInfo = {
