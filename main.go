@@ -142,13 +142,20 @@ func orderPageHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(bodyString)
 	log.Printf("error decoding sakura response: %v", reqBody)
 
-	statusCode, res, err := culqi.CreateOrder(reqBody, config.EncryptionData...)
-	fmt.Println(err)
-	fmt.Println("statusCode")
-	fmt.Println(statusCode)
-	fmt.Println(res)
-
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(statusCode)
-	w.Write([]byte(res))
+	if config.Encrypt == "1" {
+		statusCode, res, _ := culqi.CreateOrder(reqBody, config.EncryptionData...)
+		fmt.Println(statusCode)
+		fmt.Println(res)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(statusCode)
+		w.Write([]byte(res))
+	} else {
+		statusCode, res, _ := culqi.CreateOrder(reqBody)
+		fmt.Println("Resultados")
+		fmt.Println(statusCode)
+		fmt.Println(res)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(statusCode)
+		w.Write([]byte(res))
+	}
 }
