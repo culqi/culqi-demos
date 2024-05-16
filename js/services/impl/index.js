@@ -78,8 +78,8 @@ export const createCustomerImpl = async ({
   return service.createCustomer({
     first_name: firstName,
     last_name: lastName,
-    email: email,
-    address: address,
+    email,
+    address,
     address_city: addressCity,
     country_code: checkoutConfig.COUNTRY_CODE,
     phone_number: phone
