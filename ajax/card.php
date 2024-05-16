@@ -30,7 +30,7 @@ try {
 
   $req_body = array(
     "customer_id" => $_POST["customer_id"],
-    "token_id" => $_POST["token"]
+    "token_id" => $_POST["token_id"]
   );
 
   $with_tds = ($req_body) + (isset($tds_xid) ? $tds : array());

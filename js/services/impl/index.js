@@ -39,7 +39,6 @@ export const generateChargeImpl = async ({
     token: tokenId,
     first_name: customerInfo.firstName,
     last_name: customerInfo.lastName,
-    email: customerInfo.email,
     phone_number: customerInfo.phone,
     device_finger_print_id: deviceId
   };
@@ -79,8 +78,8 @@ export const createCustomerImpl = async ({
   return service.createCustomer({
     first_name: firstName,
     last_name: lastName,
-    email: email,
-    address: address,
+    email,
+    address,
     address_city: addressCity,
     country_code: checkoutConfig.COUNTRY_CODE,
     phone_number: phone
