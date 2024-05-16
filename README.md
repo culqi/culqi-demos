@@ -1,4 +1,4 @@
-# DEMO - Culqi Python + Checkout V4 + Culqi 3DS
+# DEMO - Culqi Python + Custom Checkout + Culqi 3DS
 
 
 La demo integra Culqi Python, Custom Checkout, Culqi 3DS. Es compatible con la versión 2.0 de la API de Culqi. Con esta demostración, podrás generar tokens, cargos, clientes y tarjetas.
@@ -80,4 +80,4 @@ Para visualizar el frontend de la demo, ingresa a la siguiente URL:
 
 > **Explora más demos en otros lenguajes de programación:**
 >
-> - Visita nuestro repositorio [culqi-demos](https://github.com/culqi/culqi-demos) para encontrar una variedad de ejemplos en diferentes lenguajes.
+> - Visita nuestro repositorio [culqi-demos](https://github.com/culqi/culqi-demos/?tab=readme-ov-file#lenguajes-de-programación) para encontrar una variedad de ejemplos en diferentes lenguajes.
