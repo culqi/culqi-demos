@@ -52,7 +52,8 @@ export default Object.freeze({
     RSA_ID: "<<LLAVE PÚBLICA RSA ID>>", //Id de la llave RSA,
     RSA_PUBLIC_KEY: "<<LLAVE PÚBLICA RSA>>", // Llave pública RSA que sirve para encriptar el payload de los servicios del checkout,
     COUNTRY_CODE: "PE", // iso code del país
-    ACTIVE_ENCRYPT: true (true = encyptación activada , false = encyptación inactivada)
+    ACTIVE_ENCRYPT: true (true = encyptación activada , false = encyptación inactivada),
+    URL_BASE: "http://localhost/culqi-demos-Php-checkout-charge", // url desde donde se ejecuta la demo
 });
 ```
 
