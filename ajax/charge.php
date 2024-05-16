@@ -6,8 +6,7 @@
 
 try {
   // Cargamos Requests y Culqi PHP
-  include_once dirname(__FILE__) . '/../vendor/rmccue/requests/library/Requests.php';
-  Requests::register_autoloader();
+  include_once dirname(__FILE__) . '/../vendor/autoload.php';
   include_once dirname(__FILE__) . '/../vendor/culqi/culqi-php/lib/culqi.php';
   include_once '../settings.php';
 
@@ -45,7 +44,7 @@ try {
       "first_name" => "Roberto",
       "last_name" => "Beretta",
       "phone_number" => 123456789,
-      "device_finger_print_id" => $_POST["deviceId"]
+      "device_finger_print_id" => $_POST["device_finger_print_id"]
     ),
     "metadata" => array(
       "order_id" => "COD00001",

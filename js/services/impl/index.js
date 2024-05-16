@@ -37,13 +37,11 @@ export const generateChargeImpl = async ({
     currency_code: checkoutConfig.CURRENCY,
     email: email,
     token: tokenId,
-    antifraud_details: {
-      first_name: customerInfo.firstName,
-      last_name: customerInfo.lastName,
-      email: customerInfo.email,
-      phone_number: customerInfo.phone,
-      deviceId
-    }
+    first_name: customerInfo.firstName,
+    last_name: customerInfo.lastName,
+    email: customerInfo.email,
+    phone_number: customerInfo.phone,
+    device_finger_print_id: deviceId
   };
   return service.generateCharge(
     parameters3DS

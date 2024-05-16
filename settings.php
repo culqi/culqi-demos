@@ -5,6 +5,6 @@
 define('PUBLIC_KEY', '<<LLAVE PÚBLICA>>');
 define('SECRET_KEY', "<<LLAVE PRIVADA>>");
 define('RSA_ID', "<<RSA ID>>");
-define('<<LLAVE PúBLICA RSA>>');
+define('RSA_PUBLIC_KEY', '<<LLAVE PúBLICA RSA>>');
 define('EMAIL_CUSTOMER', 'prueba1@culqi.com');
-define('ACTIVE_ENCRYPT', true);
+define('ACTIVE_ENCRYPT', false);
