@@ -24,10 +24,6 @@
         }
     ],
     "require": {
-        "culqi/culqi-php": "1.5.2",
-        "rmccue/requests": "1.7.0"
-    },
-    "autoload": {
-        "classmap": ["vendor/culqi/culqi-php/lib/Culqi/"]
+        "culqi/culqi-php": "^2.0"
     }
 }

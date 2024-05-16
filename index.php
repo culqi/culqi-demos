@@ -20,7 +20,7 @@
         <div
           class="w-full p-6 px-6 grid grid-cols-1 gap-4 place-content-center place-items-center"
         >
-          <h1 class="my-6 text-xl font-bold text-center">PYTHON DEMO</h1>
+          <h1 class="my-6 text-xl font-bold text-center">PHP DEMO</h1>
           <h2 class="text-xl font-bold text-purple-800">
             CULQI - CUSTOM CHECKOUT
           </h2>
