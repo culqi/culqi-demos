@@ -10,25 +10,45 @@ try {
   include_once dirname(__FILE__) . '/../vendor/culqi/culqi-php/lib/culqi.php';
   include_once '../settings.php';
 
+  // Verificamos si la solicitud es POST
+  if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    throw new Exception("Invalid request method");
+  }
+
+  // Obtenemos los datos JSON del cuerpo de la solicitud
+  $json = file_get_contents('php://input');
+  $data = json_decode($json, true);
+
+  // Verificamos si los datos son válidos
+  if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+    throw new Exception("Invalid JSON data");
+  }
+
+  // Inicializamos Culqi
   $culqi = new Culqi\Culqi(array('api_key' => SECRET_KEY));
 
-  // Creando Cargo a una tarjeta
+  // Preparamos los datos para Culqi
   $customer = $culqi->Customers->create(
     array(
-      "address" => $_POST["address"],
-      "address_city" => $_POST["address_city"],
-      "country_code" => $_POST["country_code"],
-      "email" => $_POST["email"],
-      "first_name" => $_POST["first_name"],
-      "last_name" => $_POST["last_name"],
+      "address" => $data["address"],
+      "address_city" => $data["address_city"],
+      "country_code" => $data["country_code"],
+      "email" => $data["email"],
+      "first_name" => $data["first_name"],
+      "last_name" => $data["last_name"],
       "metadata" => array("test" => "test"),
-      "phone_number" => $_POST["phone_number"]
+      "phone_number" => $data["phone_number"]
     )
   );
 
-  // Respuesta
+  // Enviamos la respuesta
+  header("Content-Type: application/json");
   echo json_encode($customer);
 
 } catch (Exception $e) {
-  echo json_encode($e->getMessage());
+  // Manejamos los errores
+  http_response_code(500);
+  error_log($e->getMessage());
+  echo json_encode(array("error" => $e->getMessage()));
 }
+
