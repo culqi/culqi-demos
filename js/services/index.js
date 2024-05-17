@@ -9,10 +9,10 @@ class Service {
         method,
         url: `${this.#BASE_URL}/${endPoint}`,
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "Content-Type": "application/json",
           ...headers
         },
-        data: new URLSearchParams(data)
+        data
       });
       return { statusCode: response.status, data: response.data };
     } catch (err) {
