@@ -10,35 +10,45 @@ try {
   include_once dirname(__FILE__) . '/../vendor/culqi/culqi-php/lib/culqi.php';
   include_once '../settings.php';
 
-
-  $culqi = new Culqi\Culqi(array('api_key' => SECRET_KEY));
-
-  //3ds object, la primera vez que se consume el servicio no se debe enviar los parámetros 3ds
-  $tds = array();
-  if (isset($_POST["eci"])) {
-    $tds_xid = $_POST["xid"];
-    $tds = array(
-      "authentication_3DS" => array(
-        "eci" => $_POST["eci"],
-        "xid" => $tds_xid,
-        "cavv" => $_POST["cavv"],
-        "protocolVersion" => $_POST["protocolVersion"],
-        "directoryServerTransactionId" => $_POST["directoryServerTransactionId"]
-      )
-    );
+  // Verificamos si la solicitud es POST
+  if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    throw new Exception("Invalid request method");
   }
 
+  // Obtenemos los datos JSON del cuerpo de la solicitud
+  $json = file_get_contents('php://input');
+  $data = json_decode($json, true);
+
+  // Verificamos si los datos son válidos
+  if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+    throw new Exception("Invalid JSON data");
+  }
+
+  // Inicializamos Culqi
+  $culqi = new Culqi\Culqi(array('api_key' => SECRET_KEY));
+
+  // Preparamos los datos para Culqi
   $req_body = array(
-    "customer_id" => $_POST["customer_id"],
-    "token_id" => $_POST["token_id"]
+    "customer_id" => $data["customer_id"],
+    "token_id" => $data["token_id"]
   );
 
-  $with_tds = ($req_body) + (isset($tds_xid) ? $tds : array());
-  $card = $culqi->Cards->create($with_tds);
+  // Si se envió authentication_3DS, lo agregamos a los datos
+  if (isset($data["authentication_3DS"])) {
+    $req_body["authentication_3DS"] = $data["authentication_3DS"];
+  }
+
+  // Creamos la tarjeta con Culqi
+  $card = $culqi->Cards->create($req_body);
+
+  // Enviamos la respuesta
+  header("Content-Type: application/json");
   echo json_encode($card);
+
 } catch (Exception $e) {
-
+  // Manejamos los errores
+  http_response_code(500);
   error_log($e->getMessage());
-
-  echo $e->getMessage();
+  echo json_encode(array("error" => $e->getMessage()));
 }
+
