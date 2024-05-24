@@ -6,6 +6,7 @@ export const checkoutConfig = Object.freeze({
   COUNTRY_CODE: "PE",
   RSA_ID: "<<LLAVE PÚBLICA RSA ID>>",
   RSA_PUBLIC_KEY: "<<LLAVE PÚBLICA RSA>>",
+  ACTIVE_ENCRYPT: true,
   URL_BASE: "http://localhost:3000"
 });
 
