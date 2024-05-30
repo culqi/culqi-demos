@@ -10,10 +10,10 @@ app = Flask(__name__, template_folder="src/templates")
 api = Api(app)
 CORS(app)
 
-public_key = "<<LLAVE PÚBLICA>>"
-private_key = "<<LLAVE PRIVADA>>"
-rsa_id = "<<RSA ID>>"
-rsa_public_key = ("<<LLAVE PúBLICA RSA>>")
+public_key = "INSERTE_SU_LLAVE_PUBLICA"
+private_key = "INSERTE_SU_LLAVE_PRIVADA"
+rsa_id = "INSERTE_SU_RSA_ID"
+rsa_public_key = "INSERTE_SU_LLAVE_RSA"
 port = 5100
 
 def create_response(data, status):
