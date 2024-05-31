@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://culqi.com/assets/images/brand/brand.svg"
+      type="image/x-icon"
+    />
+    <title>CULQI 3DS DEMO</title>
+  </head>
+  <body>
+      <div class="container my-4">
+          <h1>CHECKOUT V4<br />(Ordenes y Tarjetas + 3DS)</h1>
+          <label>CREAR CARGO</label><br />
+          <p id="loading" style="display: none">CARGANDO...</p>
+          <p id="payment-success" style="display: none">PAGO EXITOSO</p>
+          <p id="payment-fail" style="display: none; color: 'red'">PAGO FALLIDO</p>
+          <p id="authentication-fail" style="display: none; color: 'red'">
+              AUTENTICACIÓN FALLIDA
+          </p>
+          <p id="customer-creation-fail" style="display: none; color: 'red'">
+              CREACIÓN DE CLIENTE FALLO
+          </p>
+      </div>
+
+      <!----- -->
+      <div class="container" id="containerForm">
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-md-6">
+                      <h3 id="createOrPayBtn">Realiza un pago</h3>
+                      <a id="crearCard" class="btn btn-primary btn-lg" href="#">Pagar</a><br /><br />
+                      <div class="panel panel-default" id="response-panel">
+                          <div class="panel-heading">Respuesta</div>
+                          <div class="panel-body" id="response_card"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <script src="https://3ds.culqi.com" defer></script>
+      <script src="https://js.culqi.com/checkout-js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+      <script>
+          const paymenType = "cargo";
+      </script>
+      <script src="/js/main.js" type="module"></script>
+  </body>
+</html>
