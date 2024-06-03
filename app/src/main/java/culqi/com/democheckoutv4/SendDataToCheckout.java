@@ -5,7 +5,7 @@ class SendDataToCheckout {
     private String title;
     private String amount;
     private String orderId;
-    public  String first_name;
+    public String first_name;
     public String last_name;
     public String currency_code;
     public String phone_number;
@@ -14,38 +14,6 @@ class SendDataToCheckout {
     public String secretkey;
     public String appurl;
     public String culqiapi;
-
-    public String getCulqiApi() {
-        return culqiapi;
-    }
-
-    public void setCulqiApi(String culqiapi) {
-        this.culqiapi = culqiapi;
-    }
-
-    public String getAppurl() {
-        return appurl;
-    }
-
-    public void setAppurl(String appurl) {
-        this.appurl = appurl;
-    }
-
-    public String getPublickey() {
-        return publickey;
-    }
-
-    public void setPublickey(String publickey) {
-        this.publickey = publickey;
-    }
-
-    public String getSecretkey() {
-        return secretkey;
-    }
-
-    public void setSecretkey(String secretkey) {
-        this.secretkey = secretkey;
-    }
 
     public String getTitle() {
         return title;
@@ -101,5 +69,33 @@ class SendDataToCheckout {
 
     public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
+    }
+    public String getPublickey() {
+        return publickey;
+    }
+
+    public void setPublickey(String publickey) {
+        this.publickey = publickey;
+    }
+    public String getSecretkey() {
+        return secretkey;
+    }
+
+    public void setSecretkey(String secretkey) {
+        this.secretkey = secretkey;
+    }
+    public String getAppurl() {
+        return appurl;
+    }
+
+    public void setAppurl(String appurl) {
+        this.appurl = appurl;
+    }
+    public String getCulqiApi() {
+        return culqiapi;
+    }
+
+    public void setCulqiApi(String culqiapi) {
+        this.culqiapi = culqiapi;
     }
 }
