@@ -1,11 +1,11 @@
-# DEMO - Culqi Android + Custom Checkout + Culqi 3DS
+# DEMO - Culqi Kotlin + Checkout V4 + Culqi 3DS
 
-La demo integra Culqi Android, Custom Checkout, Culqi 3DS y es compatible con la v2.0 del Culqi API, con esta demo podrás generar cargos y ordenes.
+La demo integra Culqi Kotlin, Checkout V4 , Culqi 3DS y es compatible con la v2.0 del Culqi API, con esta demo podrás generar cargos y ordenes.
 
 ## Requisitos
 
 * WebHosting
-* Android 4.0 +
+* Kotlin 1.9.0 +
 * Backend para generar cargos y órdenes.
 * Afiliate [aquí](https://afiliate.culqi.com/).
 * Si vas a realizar pruebas obtén tus llaves desde [aquí](https://integ-panel.culqi.com/#/registro), si vas a realizar transacciones reales obtén tus llaves desde [aquí](https://panel.culqi.com/#/registro) (1).
@@ -18,14 +18,14 @@ La demo integra Culqi Android, Custom Checkout, Culqi 3DS y es compatible con la
 
 ## Configuración
 
-Dentro de la carpeta assets encontraras un archivo con el nombre custom-checkout.html donde modificaremos las siguientes lineas:
+Dentro de la carpeta **assets** encontraras un archivo con el nombre checkoutv4.html donde modificaremos las siguientes lineas:
 
 ```html
  Culqi3DS.publicKey = "pk_test_90667d0a57d45c48";
  Culqi.publicKey = 'pk_test_90667d0a57d45c48';
 ```
 
-En dichas lineas estamos asignando nuestra llave pública(pk), tanto a la configuración del checkoutv4 asi como a la del Culqi 3DS, luego modificaremos la siguiente lineas  realizar cargos y órdenes
+En dichas lineas estamos asignando nuestra llave pública(pk), tanto a la configuración del checkoutv4 asi como a la del Culqi 3DS, luego modificaremos la siguiente lineas para poder realizar cargos y ordenes
 
 > Importante: No debes colocar tu llave privada(sk) dentro de tu proyecto front.
 
@@ -33,22 +33,22 @@ En dichas lineas estamos asignando nuestra llave pública(pk), tanto a la config
 "Authorization": "Bearer sk_test_1573b0e8079863ff"
 ```
 
-Luego debemos cargar el custom-checkout.html y los archivos `*js` a nuestro webhosting.
+Luego debemos cargar el checkoutv4.html y el archivo jquery.min.js a nuestro webhosting.
 Subido los archivos deberemos tener una ruta parecida a la siguiente:
 
-https://{tudominio}/custom-checkout.html
+https://{tudominio}/checkoutv4.html
 
-Luego en el archivo MainActivity colocamos esa ruta en la siguiente parte de código
+Luego, en el archivo MainActivity.kt colocamos dicha ruta en la siguiente parte de código.
 
 
-```java
-browser.loadUrl("https://{tudominio}/custom-checkout.html")
+```kotlin
+browser.loadUrl("https://{tudominio}/checkoutv4.html")
 ```
 
-Tambien remplazamos esa url en el archivo custom-checkout.html, esto es necesario para una correcta configuración de Culqi 3DS.
+Tambien remplazamos esa url en el archivo checkoutv4.html, esto es necesario para una correcta configuración de Culqi 3DS.
 
 ```javascript
-returnUrl: "https://{tudominio}/custom-checkout.html"
+returnUrl: "https://{tudominio}/checkoutv4.html"
 ```
 
 
@@ -61,7 +61,8 @@ Para inicializar la demo en AndroidStudio primero debemos seleccionar el emulado
 
 Para poder visualizar la demo debemos generar un apk desde el menu Build/Build Bundle(s)/APK(s) de AndroidStudio, luego proceder a instalarlo en algún emulador o dispositivo celular.
 
+
 ## Importante para producción
 
-No debes configurar tu llave privada(sk) dentro del proyecto, para efectos de pruebas en está demo se colocó la sk en el archivo custom-checkout.html, pero tu sk debe estar protegido.
+No debes configurar tu llave privada(sk) dentro del proyecto, para efectos de pruebas en está demo se colocó la sk en el archivo checkoutv4.html, pero tu sk debe estar protegido.
 Para ello debes desarrollar un backend para el proyecto, el cual hará uso de tu sk y consumirá los servicio de [cargos](https://apidocs.culqi.com/#tag/Cargos/operation/crear-cargo) y [órdenes](https://apidocs.culqi.com/#tag/Ordenes/operation/crear-orden) de Culqi, posteriomente este bakend debe ser consumido desde tu aplicación android.
