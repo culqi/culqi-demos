@@ -18,19 +18,18 @@ Esta demostración integra Culqi Net/NetCore, Custom Checkout y Culqi 3DS. Es co
 
 > Las credenciales son enviadas al correo electrónico que registraste durante el proceso de afiliación.
 
-## Pre-Configuración / Instalación Librerías
+## Preconfiguración / Instalación de Librerías
 
-Para que la demo funcione se le debe instalar el archivo **CulqiNet.dll** que se genera desde la librería [Culqi-Net](https://github.com/culqi/culqi-net).
+Para que la demo funcione, debes instalar el archivo **CulqiNet.dll** generado desde la librería [Culqi-Net](https://github.com/culqi/culqi-net). La demo ya incluye esta DLL en su ruta principal.
 
-La demo ya trae dicha dll en su ruta principal.
-
-Si deseas actualizar a la última versión de la líbrería Culqi-Net puedes descarla desde los tags
+Si deseas actualizar a la última versión de la librería Culqi-Net, puedes descargarla desde los tags en:
+https://github.com/culqi/culqi-net/tags
 
 https://github.com/culqi/culqi-net/tags
 
 ## Configuración backend
 
-Primero, debes modificar los valores del archivo `appsettings.json`, que se encuentra en la raíz del proyecto. Aquí te dejo un ejemplo:
+Primero, debes modificar los valores del archivo `appsettings.json`, ubicado en la raíz del proyecto. Aquí tienes un ejemplo:
 
 ```json
 {
@@ -45,7 +44,7 @@ Primero, debes modificar los valores del archivo `appsettings.json`, que se encu
 ```
 ## Configuración frontend
 
-Para uso de la demo se está obteniendo los `credentials` a través de ViewBag en _Layout.cshtml.
+Para el uso de la demo, se están obteniendo los credentials a través de ViewBag en `_Layout.cshtml`.
 
 ```js
 export const checkoutConfig = Object.freeze({
@@ -69,7 +68,7 @@ export const customerInfo = {
 
 ## Inicialización de la demo
 
-Ejecutar la demo desde Visual Studio 2022.
+Ejecutar la demo desde Visual Studio 2022 o +.
 
 ## Prueba de la demo
 
