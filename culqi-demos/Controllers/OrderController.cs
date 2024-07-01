@@ -37,13 +37,12 @@ namespace culqi_demos.Controllers
 
 			var orderParams = new Dictionary<string, object>
 			{
-					{"amount",request.Amount},
-					{"currency_code", request.CurrencyCode},
-					{"description", request.Description},
-					{"order_number", request.OrderNumber},
-					{"expiration_date", epoch}
+				{"amount",request.Amount},
+				{"currency_code", request.CurrencyCode},
+				{"description", request.Description},
+				{"order_number", request.OrderNumber},
+				{"expiration_date", epoch}
 			};
-
 
 			orderParams["client_details"] = new Dictionary<string, object>
 			{

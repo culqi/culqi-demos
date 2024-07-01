@@ -29,7 +29,7 @@ https://github.com/culqi/culqi-net/tags
 
 ## Configuración backend
 
-Primero, debes modificar los valores del archivo `appsettings.json`, ubicado en la raíz del proyecto. Aquí tienes un ejemplo:
+Primero, debes modificar los valores del archivo `appsettings.Development.json`, ubicado en la raíz del proyecto. Aquí tienes un ejemplo:
 
 ```json
 {
