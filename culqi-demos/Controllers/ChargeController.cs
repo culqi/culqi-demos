@@ -68,7 +68,7 @@ namespace culqi_demos.Controllers
 		private ResponseCulqi CreateCharge(Dictionary<string, object> chargeParams)
 		{
 			var chargeService = new Charge(_security);
-			return !_isEncrypt
+			return _isEncrypt
 				? chargeService.Create(chargeParams, _security.rsa_id, _security.rsa_key)
 				: chargeService.Create(chargeParams);
 		}

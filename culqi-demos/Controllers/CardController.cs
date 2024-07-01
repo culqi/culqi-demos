@@ -58,7 +58,7 @@ namespace culqi_demos.Controllers
 		private ResponseCulqi CreateCard(Dictionary<string, object> cardParams)
 		{
 			var cardService = new Card(_security);
-			return !_isEncrypt
+			return _isEncrypt
 				? cardService.Create(cardParams, _security.rsa_id, _security.rsa_key)
 				: cardService.Create(cardParams);
 		}
