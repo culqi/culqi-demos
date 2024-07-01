@@ -58,7 +58,7 @@ namespace culqi_demos.Controllers
 		private ResponseCulqi CreateOrder(Dictionary<string, object> orderParams)
 		{
 			var orderService = new Order(_security);
-			return !_isEncrypt
+			return _isEncrypt
 				? orderService.Create(orderParams, _security.rsa_id, _security.rsa_key)
 				: orderService.Create(orderParams);
 		}
