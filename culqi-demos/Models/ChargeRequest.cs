@@ -2,8 +2,8 @@
 
 namespace culqi_demos.Models
 {
-    public class ChargeRequest
-    {
+	public class ChargeRequest
+	{
 		[JsonPropertyName("amount")]
 		public int Amount { get; set; }
 
@@ -21,5 +21,5 @@ namespace culqi_demos.Models
 
 		[JsonPropertyName("antifraud_details")]
 		public AntifraudDetailsChargeRequest? AntifraudDetailsChargeRequest { get; set; }
-    }
+	}
 }
