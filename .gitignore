@@ -1,1 +1,99 @@
-**/node_modules/*
+# Build Folders
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific folders
+.vscode/
+.vscode/*
+.vscode/**/*
+.vscode/**/.*
+.vscode/.*
+.idea/
+.idea/*
+.idea/**/*
+.idea/**/.*
+.idea/.*
+RiderProjects/
+RiderProjects/*
+RiderProjects/**/*
+RiderProjects/**/.*
+RiderProjects/.*
+
+# Auto-generated files
+*.log
+*.vspscc
+.vs/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Rider
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Azure DevOps
+.vs
+# Windows image file caches
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# NFS files
+._*
+
+# macOS system files
+.DS_Store
+
+# Windows thumbnails
+ehthumbs.db
+
+# npm packages
+node_modules/
+
+# Yarn Integrity file
+.yarn-integrity
+
+# Environment variables
+.env
+.env.*
+
+# Rider project-specific files
+.idea/
+.idea/*
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# macOS system files
+.DS_Store
+
+# Windows image file caches
+Thumbs.db
+
+# Windows Precompiled Header
+*.pch
+
+# SQL Server Files
+*.mdf
+*.ldf
+
+# Azure Functions artifacts
+bin/
+obj/

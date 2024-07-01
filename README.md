@@ -1,43 +1,90 @@
-# Culqi-demos
+# DEMO - Culqi Net/NetCore + Custom Checkout + Culqi 3DS
 
-Este es el repositorio oficial de demos de Culqi. Aquí encontrarás ejemplos de integración con nuestras librerías de Checkout, 3DS y APIs en varios lenguajes de programación. Cada demo es un proyecto pequeño que muestra cómo integrar y utilizar nuestras librerías y servicios. Si eres desarrollador y estás buscando una forma rápida de entender cómo trabajar con Culqi, este repositorio es un excelente punto de partida. ¡Esperamos que te sea útil!
+Esta demostración integra Culqi Net/NetCore, Custom Checkout y Culqi 3DS. Es compatible con la versión 2.0 de la API de Culqi. Con esta demostración, podrás generar tokens, cargos, clientes y tarjetas.
 
+## Requisitos
 
-## Diagrama de Flujo de Integración
+* Net 6.0+
+* Visual Studio 2022
+* culqinet.dll (se genera a partir de la librería culqi-net)
+* Afiliate [aquí](https://afiliate.culqi.com/).
 
-El siguiente diagrama de flujo proporciona una visión general de cómo se estructuran nuestros proyectos demo en términos de servicios de API, Checkout y otros componentes. Cada nodo en el diagrama representa un componente específico de un proyecto demo.
+* Si vas a realizar pruebas, obtén tus llaves desde [aquí](https://integ-panel.culqi.com/#/registro).
+* si vas a realizar transacciones reales obtén tus llaves desde [aquí](https://panel.culqi.com/#/registro) (1).
 
-```mermaid
-flowchart TD
+> Para obtener tus llaves, debes ingresar a tu CulqiPanel > Desarrollo > ***API Keys***.
 
-  api[api-services]
-  checkout[Checkout]
-  js-v4[Checkout JS-V4 \n with Culqi 3DS]
-  custom[Custom Checkout \n with Culqi 3DS]
-  soon[coming soon...]
-  %% charge[Cargos]
-  %% order[Ordenes]
-  %% customer[Clientes]
+![alt tag](http://i.imgur.com/NhE6mS9.png)
 
-  Frameworks[Languages / Frameworks]
-    Frameworks --> api
-    Frameworks --> checkout
-    checkout --> js-v4
-    checkout --> custom
-    api --> soon
-    %% api --> charge
-    %% api --> order
-    %% api --> customer
+> Las credenciales son enviadas al correo electrónico que registraste durante el proceso de afiliación.
 
-  start[Culqi Demo]
-  start --> Frameworks
+## Pre-Configuración / Instalación Librerías
+
+Para que la demo funcione se le debe instalar el archivo **CulqiNet.dll** que se genera desde la librería [Culqi-Net](https://github.com/culqi/culqi-net).
+
+La demo ya trae dicha dll en su ruta principal.
+
+Si deseas actualizar a la última versión de la líbrería Culqi-Net puedes descarla desde los tags
+
+https://github.com/culqi/culqi-net/tags
+
+## Configuración backend
+
+Primero, debes modificar los valores del archivo `appsettings.json`, que se encuentra en la raíz del proyecto. Aquí te dejo un ejemplo:
+
+```json
+{
+  "CulqiSettings": {
+      "Encrypt": false,
+      "PublicKey": "<<LLAVE PÚBLICA>>",
+      "SecretKey": "<<LLAVE SECRETA>>",
+      "RsaId": "<<LLAVE PÚBLICA RSA ID>>",
+      "RsaKey": "<<LLAVE PÚBLICA RSA>>"
+  },
+}
+```
+## Configuración frontend
+
+Para uso de la demo se está obteniendo los `credentials` a través de ViewBag en _Layout.cshtml.
+
+```js
+export const checkoutConfig = Object.freeze({
+    TOTAL_AMOUNT: 600,
+    CURRENCY: "PEN",
+    PUBLIC_KEY: credentials.publicKey,
+    COUNTRY_CODE: "PE",
+    RSA_ID: credentials.rsaId,
+    RSA_PUBLIC_KEY: credentials.rsaKey,
+    ACTIVE_ENCRYPT: credentials.isEncrypt,
+    URL_BASE: "https://localhost:7288/api"
+});
+
+export const customerInfo = {
+    firstName: "Dennis",
+    lastName: "Demo",
+    address: "Av. siempre viva",
+    phone: "999999999",
+}
 ```
 
-Aquí tienes algunos enlaces a los proyectos demo que corresponden a los componentes del diagrama:
+## Inicialización de la demo
 
-### PHP
-- [Demo Custom Checkout con Culqi 3DS](./php/checkout/custom-checkout-with-culqi3ds/README.md)
-- [Demo Checkout JSV4 con Culqi 3DS](./php/checkout/jsv4-with-culqi3ds/README.md)
+Ejecutar la demo desde Visual Studio 2022.
 
-### JAVA
-- [DEMO Custom Checkout con Culqi 3DS](./java/checkout/custom-checkout-with-culqi3ds/README.md)
+## Prueba de la demo
+
+Para visualizar el frontend de la demo, ingresa a la siguiente URL:
+
+- Para probar cargos: `https://localhost:7288`
+
+
+## Documentación
+
+- [Referencia de Documentación](https://docs.culqi.com/)
+- [Referencia de API](https://apidocs.culqi.com/)
+
+---
+
+> **Explora más demos en otros lenguajes de programación:**
+>
+> - Visita nuestro repositorio [culqi-demos](https://github.com/culqi/culqi-demos/?tab=readme-ov-file#lenguajes-de-programación) para encontrar una variedad de ejemplos en diferentes lenguajes.
