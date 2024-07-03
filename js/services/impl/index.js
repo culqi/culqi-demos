@@ -18,7 +18,8 @@ export const generateOrderImpl = async () => {
       email: customerInfo.email,
       phone_number: customerInfo.phone
     },
-    expiration_date: epoch
+    expiration_date: epoch,
+    confirm: false
   }
   return service.createOrder(bodyRequest);
 }
