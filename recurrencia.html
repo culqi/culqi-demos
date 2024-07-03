@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Culqi Recurrencia Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+
+    <!--  -->
+
+
+    <style media="screen">
+      .container-fluid {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .col-md-4, .col-md-3 {
+        flex: 1;
+        min-width: 250px; /* Ajustar según sea necesario */
+        margin-bottom: 20px;
+      }
+      
+      #response1,#response2,#response3,#response4 {
+        background-color: #9ed9ea;
+      }
+      strong {
+        color: #327ab7;
+      }
+    </style>
+  </head>
+  <body class="w-full p-6 px-6 grid grid-cols-1 gap-4 place-content-center place-items-center">
+    <H1 class="text-xl font-bold text-black-800">DEMO CULQI - SUSCRIPCION</H1>
+    <div class="container-fluid" >
+      <div class="row">
+        <!--REGISTRAR PLAN:-->
+        <div class="col-md-4">
+          <div>
+            <h1 class="font-bold text-purple-900 mb-6 text-2xl">Nuevo plan</h1>
+            <form>
+              <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Datos del plan </label>
+              <div class="flex space-x-2 mb-4">
+                <div class="flex-1">
+                  <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Nombre: </label>
+                  <input type="text" 
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="name_plan" 
+                    placeholder="Plan de prueba"
+                    required
+                  />
+                </div>
+                <div class="flex-1">
+                  <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Nombre corto:</label>
+                  <input type="text"
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="short_name"
+                    placeholder="Nombre corto del plan"
+                    required />
+                </div>
+              </div>
+              <div>
+                <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Descripcion:</label>
+                <input type="text"
+                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="description"
+                  placeholder="Descripcion Plan de Prueba"
+                  required />
+              </div>
+
+              <div>
+                <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Imagen:</label>
+                <div class="relative border border-purple-500 rounded-md p-4 w-full">
+                  <span id="file-name" class="text-gray-600 mt-2"></span>
+                  <input type="file" name="image" id="image" required>
+                </div>
+              </div>
+
+              <br>
+              <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Configuracion</label>
+              <div class="flex space-x-2 mb-4"> 
+                <div class="flex-1">
+                  <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Monto</label>
+                  <input type="number"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="monto_plan"
+                    placeholder="Min 300"
+                    required />
+                </div>
+                <div class="flex-1">
+                  <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Moneda</label>
+                  <select 
+                  class="w-full px-3 py-2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="moneda_plan">
+                    <option value="PEN">PEN</option>
+                    <option value="USD">USD</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="flex space-x-2 mb-4">
+                <div class="flex-1">
+                <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Frecuencia</label>
+                <select 
+                  class="w-full px-3 py-2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="interval_unit_time">
+                    <option value="1">Diario</option>
+                    <option value="2">Semanal</option>
+                    <option value="3">Mensual</option>
+                    <option value="4">Anual</option>
+                    <option value="5">Trimestral</option>
+                    <option value="6">Semestral</option>
+                  </select>
+                </div>
+                <div class="flex-1">
+                  <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Cant. intervalos</label>
+                  <input type="number"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="interval_count"
+                    placeholder="Cantidad intervalos entre cargos"
+                    required />
+                </div>
+                <div class="flex-1">
+                  <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Ciclo inicial</label>
+                  <input type="number"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="ciclo_inicial"
+                    placeholder="Ciclos iniciales del plan"
+                    required />
+                </div>
+              </div>  
+              <div class="form-group">
+                <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Información de cobro:</label>
+                <input type="text"
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="pay_info" />
+              </div>
+              
+              <!--boton-->
+              <a id="crearPlan" 
+              class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                >Crear Plan</a> <br>
+
+            </form>
+            <br /><br />
+            <div class="panel panel-default" id="response-panel3">
+              <div class="panel-heading">Response</div>
+              <div class="panel-body" id="response3"></div>
+            </div>
+            <!-- <h4 class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">O utiliza alguno de tus últimos planes creadas:</h4> -->
+            <br />
+            <div id="table-plan-container"></div>
+          </div>
+        </div>
+
+        <!--GUARDAR CLIENTE:-->
+        <div class="col-md-4">
+          <div >
+            <h1 class="font-bold text-purple-900 mb-6 text-2xl">Registrar Cliente</h1>
+            <form>
+              <div>
+                <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Dirección:</label>
+                <input type="text"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="address" />
+              </div>
+              
+              <div class="flex space-x-2 mb-4">
+                <div class="flex-1">
+                  <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Distrito:</label>
+                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      id="address_c" />
+                </div>
+                <div class="flex-1">
+                  <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">country_code:</label>
+                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      id="country" placeholder="Ingresar PE" />
+                </div>
+              </div>
+              <div class="flex space-x-2 mb-4">
+                <div class="flex-1">
+                  <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Nombre:</label>
+                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      id="f_name" />
+                </div>
+                <div class="flex-1">
+                    <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Apellidos:</label>
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="l_name" />
+                </div>
+              </div>
+              <div class="flex space-x-2 mb-4">
+                <div class="flex-1">
+                  <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Email:</label>
+                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      id="email" />
+                </div>
+                <div class="flex-1">
+                  <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Celular:</label>
+                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      id="phone" />
+                </div>
+              </div>
+              
+              <!-- boton CrearCliente -->
+              <a id="crearCustomer" 
+              class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+              href="#"
+                >Crear Cliente</a
+              >
+            </form>
+            <br /><br />
+            <div class="panel panel-default" id="response-panel1">
+              <div class="panel-heading">Response</div>
+              <div class="panel-body" id="response1"></div>
+            </div>
+            <!-- <h4 class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">O utiliza alguno de los últimos clientes creados:</h4> -->
+            <br />
+            <div id="table-customer-container"></div>
+          </div>
+        </div>
+        <!--GUARDAR TARJETA:-->
+        <div class="col-md-4">
+          <div>
+            <h1 class="font-bold text-purple-900 mb-6 text-2xl">Guarda tu tarjeta</h1>
+            <input
+              id="idCustomer"
+              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              type="text"
+              placeholder="Ingresar id cliente (cus_test_xxxxxxxx)"
+              value=""
+            /><br /><br />
+            <!-- boton CrearTarjeta -->
+            <a id="crearCard" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" 
+            href="#"
+              >Crear Tarjeta</a
+            ><br /><br />
+            <div class="panel panel-default" id="response-panel2">
+              <div class="panel-heading">Response</div>
+              <div class="panel-body" id="response2"></div>
+            </div>
+            <h4 class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">O utiliza alguna de tus últimas tarjetas creadas:</h4>
+            <br />
+            <div id="table-card-container"></div>
+
+            <!-- <h5>
+              crd_test_v5dR8aWNks6xq7Tf<br />
+              crd_test_NU63KVc8BeYvmv0s<br />
+              crd_test_tYRBu6N5KrnPw3f3<br />
+              crd_test_QYRLCiVG6juBnM8e<br />
+              crd_test_mCztYk38UHWahDwh<br />
+              crd_test_zJ00tIT3qPs8WdDM<br />
+              crd_test_nIcocdV6Zhfcwbcu<br />
+            </h5> -->
+          </div>
+        </div>
+        <!-- CrearSuscripcion -->
+        <div class="col-md-3">
+          <h1 class="font-bold text-purple-900 mb-6 text-2xl"> Suscripcion</h1>
+          <div class="form-group">
+            <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">id Plan:</label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            placeholder="Ingresar (plan_test_xxxxxxxx)"
+            id="idPlan" />
+          </div>
+          <div class="form-group">
+            <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">id Card:</label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            placeholder="Ingresar (crd_test_xxxxxxxx)"
+            id="idCard" />
+          </div>
+
+          <a  id="crearSuscripcion" 
+          class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+          href="#">Suscribirse</a>
+          <br><br>
+          <div class="panel panel-default" id="response-panel4">
+            <div class="panel-heading">Response</div>
+            <div class="panel-body" id="response4"></div>
+          </div>
+          <!-- <h4 class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">O usa una de tus suscripcion ya creadas:</h4> -->
+            <br />
+          <div id="table-suscription-container"></div>
+        
+      
+        </div>
+ 
+
+      </div>
+    </div>
+    <script src="https://checkout.culqi.com/js/v4"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- <script src="waitMe.min.js"></script> -->
+    <!-- <script type="text/javascript" src="js/process.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.23/moment-timezone-with-data-2012-2022.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/crearPlan.js"></script>
+    <script type="text/javascript" src="js/crearCustomer.js"></script>
+    <script type="text/javascript" src="js/crearCard.js"></script>
+    <script type="text/javascript" src="js/eliminarCard.js"></script>
+    <script type="text/javascript" src="js/listCards.js"></script>
+    
+    <!-- <script type="text/javascript" src="js/crearCargo.js"></script> -->
+    <script type="text/javascript" src="js/crearSuscripcion.js"></script>
+  </body>
+</html>
