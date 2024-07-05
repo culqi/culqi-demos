@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    culqi-ruby-oficial (1.0.0)
+    culqi-ruby-oficial (1.0.5)
     excon (0.102.0)
     openssl-oaep (0.1.0)
     webrick (1.4.4)
