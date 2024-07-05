@@ -56,39 +56,44 @@ const handledContentLoad = async () => {
 
   // Function to handle 3DS parameters
   async function handle3DSParameters(parameters3DS) {
-    let statusCode = null;
-    let objResponse = null;
-    let response = null;
+    try {
+      let statusCode = null;
+      let objResponse = null;
+      let response = null;
 
-    if (paymentType === charge) {
-      response = await generateChargeImpl({
-        deviceId,
-        email,
-        tokenId,
-        parameters3DS
-      });
-    } else {
-      response = await createCardImpl({
-        customerId,
-        tokenId,
-        deviceId,
-        parameters3DS
-      });
-    }
-
-    objResponse = response.data.object;
-    statusCode = response.statusCode;
-
-    console.log("Status code: ", statusCode);
-
-    if (statusCode === 201) {
-      if (objResponse === "charge" || objResponse === "card") {
-        selectors.cardResponseList.forEach((el) => {
-          el.innerHTML = "OPERACIÓN REALIZADA EXITOSAMENTE";
+      if (paymentType === charge) {
+        response = await generateChargeImpl({
+          deviceId,
+          email,
+          tokenId,
+          parameters3DS
+        });
+      } else {
+        response = await createCardImpl({
+          customerId,
+          tokenId,
+          deviceId,
+          parameters3DS
         });
       }
+
+      objResponse = response.data.object;
+      statusCode = response.statusCode;
+
+      console.log("Status code: ", statusCode);
+
+      if (statusCode === 201) {
+        if (objResponse === "charge" || objResponse === "card") {
+          selectors.cardResponseList.forEach((el) => {
+            el.innerHTML = "OPERACIÓN REALIZADA EXITOSAMENTE";
+          });
+        }
+      }
+      Culqi3DS.reset();
+    } catch (err) {
+      console.error("Error in handle3DSParameters:", err);
+      Culqi3DS.reset();
     }
-    Culqi3DS.reset();
   }
 
   // Event listener for message event
@@ -102,7 +107,11 @@ const handledContentLoad = async () => {
       const { parameters3DS, error } = event.data;
 
       if (parameters3DS) {
-        await handle3DSParameters(parameters3DS);
+        try {
+          await handle3DSParameters(parameters3DS);
+        } catch (err) {
+          console.error("Error in handle3DSParameters:", err);
+        }
       }
 
       if (error) {
