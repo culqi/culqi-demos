@@ -96,10 +96,6 @@
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 						</exclude>
-						<exclude>
-							<groupId>com.github.culqi</groupId>
-							<artifactId>culqi-java</artifactId>
-						</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
