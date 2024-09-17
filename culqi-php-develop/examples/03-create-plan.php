@@ -5,15 +5,13 @@
  */
 header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json');
-
-  require dirname(__FILE__) . '/../vendor/autoload.php';
-
+require dirname(__FILE__) . '/../vendor/autoload.php';
+include_once '../../setting.php';
 
  use Culqi\Culqi;
 
   // Configurar tu API Key y autenticación
-$SECRET_API_KEY = 'sk_test_04aff21ada451a4c';
-$culqi = new Culqi(array('api_key' => $SECRET_API_KEY));
+$culqi = new Culqi(array('api_key' => SECRET_API_KEY));
 
 try {
   // Creando el plan en Culqi

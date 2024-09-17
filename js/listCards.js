@@ -33,7 +33,14 @@ function showTable(cardList, idRecent = null) {
             .addClass("btn btn-primary")
             .text("Usar")
             .on("click", function () {
-              $("#idCard1").val(card.id);
+              navigator.clipboard.writeText(card.id).then(
+                function() {
+                  alert("ID de tarjeta copiado al portapapeles: " + card.id);
+                },
+                function(err) {
+                  alert("Error al copiar al portapapeles: ", err);
+                }
+              )
             })
         )
       );

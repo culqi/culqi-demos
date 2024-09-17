@@ -15,8 +15,6 @@ $('#crearSuscripcion').on('click', function (e) {
       }
       if(data.constructor == Object){
           result4 = JSON.parse(JSON.stringify(data));
-          console.log(result4.id)
-          console.log(data.status)
       }
       if(result4.id != null){
         console.log("rpta")

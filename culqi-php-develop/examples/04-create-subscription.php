@@ -2,12 +2,11 @@
 header('Content-Type: application/json');
 
 require dirname(__FILE__) . '/../vendor/autoload.php';
+include_once '../../setting.php';
 
 use Culqi\Culqi;
 
-
-$SECRET_API_KEY = 'sk_test_04aff21ada451a4c';
-$culqi = new Culqi(array('api_key' => $SECRET_API_KEY));
+$culqi = new Culqi(array('api_key' => SECRET_API_KEY));
 try {
 // Creando Cargo a una tarjeta
 $subscription = $culqi->Subscriptions->create(
