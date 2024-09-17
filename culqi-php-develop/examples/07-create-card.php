@@ -9,12 +9,12 @@ header('Content-Type: application/json');
 require '../Requests-master/library/Requests.php';
 Requests::register_autoloader();
 require '../lib/culqi.php';
+include_once '../../setting.php';
 
 use Culqi\Culqi;
 
 // Configurar tu API Key y autenticación
-$SECRET_API_KEY = "INSERTE_SU_LLAVE_PRIVADA";
-$culqi = new Culqi(array('api_key' => $SECRET_API_KEY));
+$culqi = new Culqi(array('api_key' => SECRET_API_KEY));
 try {
   // Creando Cargo a una tarjeta
   $card = $culqi->Cards->create(
@@ -28,3 +28,4 @@ try {
 } catch (Exception $e) {
   echo json_encode($e->getMessage());
 }
+?>

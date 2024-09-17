@@ -9,10 +9,9 @@ try {
    require '../Requests-master/library/Requests.php';
   Requests::register_autoloader();
   require '../lib/culqi.php';
+  include_once '../../setting.php';
 
-  // Codigo de Comercio
-  $COD_COMERCIO = "INSERTE_SU_LLAVE_PUBLICA";
-  $culqi = new Culqi\Culqi(array('api_key' => $COD_COMERCIO));
+  $culqi = new Culqi\Culqi(array('api_key' => PUBLIC_KEY));
 
   // Creando Cargo a una tarjeta
   $token = $culqi->Tokens->create(

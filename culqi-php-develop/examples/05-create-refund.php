@@ -7,10 +7,9 @@
 try {
   // Usando Composer (o puedes incluir las dependencias manualmente)
   require '../vendor/autoload.php';
+  include_once '../../setting.php';
 
-  // Configurar tu API Key y autenticación
-  $SECRET_API_KEY = "INSERTE_SU_LLAVE_PRIVADA";
-  $culqi = new Culqi\Culqi(array('api_key' => $SECRET_API_KEY));
+  $culqi = new Culqi\Culqi(array('api_key' => SECRET_API_KEY));
 
   // Creando Cargo a una tarjeta
   $refund = $culqi->Refunds->create(
@@ -26,3 +25,4 @@ try {
 } catch (Exception $e) {
   echo json_encode($e->getMessage());
 }
+?>
