@@ -73,6 +73,7 @@ export const createCustomerImpl = async ({
   email,
   address,
   addressCity,
+  countryCode,
   phone
 }) => {
   return service.createCustomer({
@@ -81,7 +82,7 @@ export const createCustomerImpl = async ({
     email,
     address,
     address_city: addressCity,
-    country_code: checkoutConfig.COUNTRY_CODE,
+    country_code: countryCode,
     phone_number: phone
   });
 };

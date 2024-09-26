@@ -124,7 +124,7 @@ const handledContentLoad = async () => {
         message = "ERROR AL REALIZAR LA OPERACIÓN";
         break;
       case 201:
-        message = "OPERACIÓN EXITOSA - SIN 3DS";
+        message = `OPERACIÓN EXITOSA - SIN 3DS<br>ID: ${objResponse.id}`;
         Culqi3DS.reset();
         break;
       default:
