@@ -77,15 +77,15 @@ const handledContentLoad = async () => {
       });
     }
 
-    objResponse = response.data.object;
+    objResponse = response.data;
     statusCode = response.statusCode;
 
     console.log("Status code: ", statusCode);
 
     if (statusCode === 201) {
-      if (objResponse === "charge" || objResponse === "card") {
+      if (objResponse.object === "charge" || objResponse.object === "card") {
         selectors.cardResponseList.forEach((el) => {
-          el.innerHTML = "OPERACIÓN REALIZADA EXITOSAMENTE";
+          el.innerHTML = "OPERACIÓN REALIZADA EXITOSAMENTE<br>ID: "+ objResponse.id;
         });
       }
     }
