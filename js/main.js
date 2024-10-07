@@ -213,7 +213,7 @@ const handledContentLoad = async () => {
     });
   
     if ( dataCustomer.data.object === "error") {
-      if (dataCustomer.data.merchant_message.includes("Invalid value") && dataCustomer.data.merchant_message.includes("It must be")) {
+      if (dataCustomer.data.merchant_message.includes("Invalid value. It must be")) {
         selectors.customerResponse.innerHTML = "Error de código de país";//mensaje countryCode
       }else{
       selectors.customerResponse.innerHTML = dataCustomer.data.merchant_message;//error general
