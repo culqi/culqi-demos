@@ -194,24 +194,45 @@ const handledContentLoad = async () => {
     Culqi3DS.initAuthentication(tokenId);
   };
 
-  const createCustomer = async () => {
+  const createCustomer = async () => { 
     selectors.customerResponse.innerHTML = spinerHtml;
+    
+    const customerInfo = {
+      firstName: selectors.customersFirstNameElement.value,
+      lastName: selectors.customersLastNameElement.value,
+      address: selectors.customersAddressElement.value,
+      addressCity: selectors.customersAddressCityElement.value,
+      countryCode: selectors.customersCountryCodeElement.value ,
+      phone: selectors.customersPhoneElement.value,
+      email: selectors.customersEmailElement.value 
+    };
+
     const dataCustomer = await createCustomerImpl({
-      ...customerInfo
+      ...customerInfo //captura del front la data de los input armar object customerInfo
     });
-
-    selectors.customerCustomFormElement.value = dataCustomer.data.id;
-
-    selectors.customerResponse.innerHTML = dataCustomer.data.id;
+  
+    if ( dataCustomer.data.object === "error") {
+      if (dataCustomer.data.merchant_message.includes("Invalid value") && dataCustomer.data.merchant_message.includes("It must be")) {
+        selectors.customerResponse.innerHTML = "Error de código de país";//mensaje countryCode
+      }else{
+      selectors.customerResponse.innerHTML = dataCustomer.data.merchant_message;//error general
+      }
+    } else {
+      selectors.customerCustomFormElement.value = dataCustomer.data.id;
+      selectors.customerResponse.innerHTML = dataCustomer.data.id;//id
+    }
+    
   };
 
   const loadCustomerExampleData = () => {
+    const customerInfo = generateCustomerData();
     Object.keys(customerInfo).forEach((key) => {
       const selectorOption =
         selectors[
           `customers${key.charAt(0).toUpperCase() + key.slice(1)}Element`
-        ];
+        ];      
       if (selectorOption) {
+
         selectorOption.value = customerInfo[key];
       }
     });
