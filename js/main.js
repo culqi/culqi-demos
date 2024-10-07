@@ -1,4 +1,5 @@
-import { checkoutConfig, customerInfo } from "./config/index.js";
+import { checkoutConfig } from "./config/index.js";
+import { generateCustomerData } from './utils/helpers.js';
 import { culqiConfig } from "./config/checkout.js";
 import "./config/culqi3ds.js";
 import {
