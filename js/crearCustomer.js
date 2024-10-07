@@ -1,3 +1,4 @@
+import { checkoutConfig } from "../js/config/index.js";
 $("#response-panel1").hide();
 $('#crearCustomer').on('click', function (e) {
   var address = $("#address").val();
@@ -7,10 +8,12 @@ $('#crearCustomer').on('click', function (e) {
   var f_name = $('#f_name').val()
   var l_name = $('#l_name').val()
   var phone = $('#phone').val()
+  var BASE_URL = `${checkoutConfig.URL_BASE}`;
+
 
   $.ajax({
     type: 'POST',
-    url: 'http://localhost/culqi-recurrencia-v4/culqi-php-develop/examples/06-create-customer.php',
+    url: BASE_URL+"/ajax/createCustomer.php",
     data: { address, address_c, country, email, f_name, l_name, phone },
     datatype: 'json',
     success: function (data) {

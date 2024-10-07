@@ -1,3 +1,4 @@
+import { checkoutConfig } from "../js/config/index.js";
 $("#response-panel3").hide();
 $('#crearPlan').on('click', function (e) {
   var name = $("#name_plan").val();
@@ -9,12 +10,13 @@ $('#crearPlan').on('click', function (e) {
   var interval_count = $('#interval_count').val();
   var initial_cycles = $('#ciclo_inicial').val();
   var interval_unit_time = $('#interval_unit_time').val();
-  var  pay_info= $('#pay_info').val()
+  var  pay_info= $('#pay_info').val();
+  var BASE_URL = `${checkoutConfig.URL_BASE}`;
 
  
   $.ajax({
     type: 'POST',
-    url: 'http://localhost/culqi-recurrencia-v4/culqi-php-develop/examples/03-create-plan.php',
+    url: BASE_URL+"/ajax/plan.php",
     data: { name , short_name , description, currency , amount , interval_count , 
               initial_cycles, image, interval_unit_time , pay_info },
     datatype: 'json',

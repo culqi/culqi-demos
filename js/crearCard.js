@@ -1,7 +1,9 @@
-$("#response-panel2").hide();
-publicKey = 'pk_test_753a58aa78e4f7e2'; //Ingresa la llave pública de tu comercio
+import { checkoutConfig } from "../js/config/index.js";
+import { getListCards } from "../js/listCards.js";
 
-paymentMethods={// las opciones se ordenan según se configuren
+$("#response-panel2").hide();
+
+const paymentMethods={
   tarjeta: true,
   yape: true,
   billetera: true,
@@ -10,7 +12,7 @@ paymentMethods={// las opciones se ordenan según se configuren
   cuotealo: true,	
 }
 
-options ={
+const options ={
   lang: 'auto',
   installments: true, // Habilitar o deshabilitar el campo de cuotas
   modal: true,
@@ -19,7 +21,7 @@ options ={
   paymentMethodsSort: Object.keys(paymentMethods), // las opciones se ordenan según se configuren en paymentMethods
 };
 
-appearance = {
+const appearance = {
   theme: "default",
   hiddenCulqiLogo: false,
   hiddenBannerContent: false,
@@ -39,7 +41,7 @@ appearance = {
     },
 };
 
-settings = {
+const settings = {
   title: 'Culqi  store 2',
   currency: 'PEN', // Este parámetro es requerido para realizar pagos yape
   amount: 0, // Este parámetro es requerido para realizar pagos yape(80.00)
@@ -49,7 +51,7 @@ const client = {
   email: '',
 };
 
-config = {
+const config = {
   settings,
   client,
   options,
@@ -67,19 +69,20 @@ const handleCulqiAction = () => {
     console.log('Errorrr : ', Culqi.error);
   }
 }
+const publicKey = `${checkoutConfig.PUBLIC_KEY}`; //Ingresa la llave pública de tu comercio
 
-
-Culqi = new CulqiCheckout(publicKey, config);
+const Culqi = new CulqiCheckout(publicKey, config);
 
 Culqi.culqi = handleCulqiAction;
 
 function createCard(token) {
-  console.log('Test');
     if (token) {
     var idCustomer = $('#idCustomer').val()
+    //url
+    var BASE_URL = `${checkoutConfig.URL_BASE}`;
     $.ajax({
       type: 'POST',
-      url: 'http://localhost/culqi-recurrencia-v4/culqi-php-develop/examples/07-create-card.php',
+      url: BASE_URL+"/ajax/createCard.php",
       data: { token: token, idCustomer },
       datatype: 'json',
       success: function (data) {
@@ -114,7 +117,7 @@ $('#crearCard').on('click', function (e) {
   Culqi.open();
   console.log('Botón crear tarjeta clickeado'); 
   e.preventDefault();
-  console.log(Culqi.culqi);
+  console.log(Culqi.token);
 });
 
 

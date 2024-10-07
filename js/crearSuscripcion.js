@@ -1,3 +1,4 @@
+import { checkoutConfig } from "../js/config/index.js";
 $("#response-panel4").hide();
 $('#crearSuscripcion').on('click', function (e) {
   var idPlan = $("#idPlan").val();
@@ -5,7 +6,7 @@ $('#crearSuscripcion').on('click', function (e) {
   console.log("id Plan "+idPlan, "Id Card"+idCard)
   $.ajax({
     type: 'POST',
-    url: 'http://localhost/culqi-recurrencia-v4/culqi-php-develop/examples/04-create-subscription.php',
+    url: BASE_URL+"/ajax/createSubscription.php",
     data: { idPlan , idCard },
     datatype: 'json',
     success: function(data) {
