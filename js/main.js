@@ -204,10 +204,14 @@ const handledContentLoad = async () => {
       address: selectors.customersAddressElement.value,
       addressCity: selectors.customersAddressCityElement.value,
       countryCode: selectors.customersCountryCodeElement.value ,
-      phone: selectors.customersPhoneElement.value,
+      phone: selectors.customersPhoneElement.value.replace(/\s/g, ""),
       email: selectors.customersEmailElement.value 
     };
-
+    //validar solo US o PE
+    if (!['US', 'PE'].includes(customerInfo.countryCode)) {
+      selectors.customerResponse.innerHTML = "Error: Código de país inválido. Solo se acepta 'US' o 'PE'.";
+      return; // Detener la ejecución si el código de país no es válido
+    }
     const dataCustomer = await createCustomerImpl({
       ...customerInfo //captura del front la data de los input armar object customerInfo
     });
