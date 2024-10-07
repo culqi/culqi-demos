@@ -1,3 +1,6 @@
+import { checkoutConfig } from "../js/config/index.js";
+import { deletCard } from "../js/eliminarCard.js";
+
 getListCards();
 function formatDate(unixTimeStamp) {
   const date = moment.tz(unixTimeStamp, "America/New_York");
@@ -24,7 +27,7 @@ function showTable(cardList, idRecent = null) {
 
     table.append(thead);
     cardList.forEach((card) => {
-      row = $("<tr></tr>").addClass(idRecent === card.id ? "success" : "");
+      let row = $("<tr></tr>").addClass(idRecent === card.id ? "success" : "");
       row.append($("<td></td>").text(card.id));
       row.append($("<td></td>").text(formatDate(card.creation_date)));
       row.append(
@@ -74,10 +77,10 @@ function showTable(cardList, idRecent = null) {
   }, 1000);
 }
 
-function getListCards(idRecent = null) {
+export function getListCards(idRecent = null) {
   $.ajax({
     type: "GET",
-    url: "http://localhost/culqi-recurrencia-v4/culqi-php-develop/examples/08-get-list-card.php",
+    url: `${checkoutConfig.URL_BASE}`+"/ajax/getlistCard.php",
     datatype: "json",
     success: function (data) {
       var cardList = "";
