@@ -13,7 +13,6 @@ $('#crearPlan').on('click', function (e) {
   var interval_unit_time = $('#interval_unit_time').val();
   var  pay_info= $('#pay_info').val();
   var BASE_URL = `${checkoutConfig.URL_BASE}`;
-  console.log(BASE_URL)
  
   $.ajax({
     type: 'POST',

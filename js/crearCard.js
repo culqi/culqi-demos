@@ -78,7 +78,6 @@ Culqi.culqi = handleCulqiAction;
 function createCard(token) {
     if (token) {
     var idCustomer = $('#idCustomer').val()
-    //
     var BASE_URL = `${checkoutConfig.URL_BASE}`;
     console.log(BASE_URL)
 

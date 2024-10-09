@@ -1,15 +1,14 @@
 import { checkoutConfig } from "../js/config/index.js";
 $("#response-panel1").hide();
 $('#crearCustomer').on('click', function (e) {
-  var address = $("#address").val();
-  var address_c = $('#address_c').val()
+  var address = $("#address").val().replace(/\s+/g, '');
+  var address_c = $('#address_c').val().replace(/\s+/g, '');
   var country = $('#country').val()
   var email = $('#email').val()
-  var f_name = $('#f_name').val()
-  var l_name = $('#l_name').val()
-  var phone = $('#phone').val()
+  var f_name = $('#f_name').val().replace(/\s+/g, '');
+  var l_name = $('#l_name').val().replace(/\s+/g, '');
+  var phone = $('#phone').val().replace(/\s+/g, '');
   var BASE_URL = `${checkoutConfig.URL_BASE}`;
-  console.log(BASE_URL)
 
   $.ajax({
     type: 'POST',
@@ -25,11 +24,16 @@ $('#crearCustomer').on('click', function (e) {
         result = JSON.parse(JSON.stringify(data));
       }
       if (result.object === 'customer') {
+        $('#idCustomer').val(result.id);
         resultdiv('Se creo el objeto Customer con el siguiente ID: ' + result.id);
       }
       if (result.object === 'error') {
-        resultdiv(result);
-        alert(result.merchant_message);
+        if (result.merchant_message.includes("Invalid value. It must be")) {
+          resultdiv("Error de código de país");
+        } else {
+          resultdiv(result.merchant_message); 
+        }
+  
       }
     },
     error: function (error) {
