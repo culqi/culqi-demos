@@ -5,7 +5,6 @@ $('#crearSuscripcion').on('click', function (e) {
   var idCard = $('#idCard').val();
   console.log("id Plan "+idPlan, "Id Card"+idCard);
   var BASE_URL = `${checkoutConfig.URL_BASE}`;
-  console.log(BASE_URL)
 
   $.ajax({
     type: 'POST',

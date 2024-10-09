@@ -46,7 +46,7 @@ function showTable(cardList, idRecent = null) {
                   alert("Error al copiar al portapapeles: ", err);
                 }
               )
-              //$("#idCard1").val(card.id);
+
             })
         )
       );
