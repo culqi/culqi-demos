@@ -8,12 +8,3 @@ export const checkoutConfig = Object.freeze({
   RSA_PUBLIC_KEY: "<<LLAVE PúBLICA RSA>>",
   URL_BASE: "http://localhost/culqi-demos"
 });
-
-export const customerInfo = {
-  firstName: "Dennis",
-  lastName: "Demo",
-  address: "Av siempre viva",
-  addressCity: "Lima",
-  phone: "999999999",
-  email: "review-" + Math.floor(Date.now() / 1000) + "@culqi.com"
-};
