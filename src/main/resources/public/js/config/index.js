@@ -4,9 +4,10 @@ export const checkoutConfig = Object.freeze({
   CURRENCY: "PEN",
   PUBLIC_KEY: "<<LLAVE PÚBLICA>>",
   COUNTRY_CODE: "PE",
+  ACTIVE_ENCRYPT: false,
   RSA_ID: "<<LLAVE PÚBLICA RSA ID>>",
   RSA_PUBLIC_KEY: "<<LLAVE PÚBLICA RSA>>",
-  URL_BASE: "http://localhost:8080"
+  URL_BASE: "http://localhost:8081"
 });
 
 export const customerInfo = {
