@@ -195,6 +195,17 @@ const handledContentLoad = async () => {
     Culqi3DS.initAuthentication(tokenId);
   };
 
+  //validar 
+  const isValidEmail = (email) => {
+    const re = /^[a-zA-Z0-9._]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/;
+    return re.test(email);
+  };
+
+  const isValidPhoneNumber = (phoneNumber) => {
+    const re = /^\d{9}$/; // Solo acepta 9 dígitos.
+    return re.test(phoneNumber);
+  };
+
   const createCustomer = async () => { 
     selectors.customerResponse.innerHTML = spinerHtml;
     
@@ -207,6 +218,25 @@ const handledContentLoad = async () => {
       phone: selectors.customersPhoneElement.value.replace(/\s/g, ""),
       email: selectors.customersEmailElement.value 
     };
+    // Validar si algún campo requerido está vacío
+    const emptyFields = Object.entries(customerInfo).filter(([key, value]) => !value);
+  
+  if (emptyFields.length > 0) {
+    selectors.customerResponse.innerHTML = `Error: El campo ${emptyFields[0][0]} está vacío.`; 
+    return; // Detener la ejecución si algún campo está vacío
+  }
+  
+    // Validar el correo electrónico
+    if (!isValidEmail(customerInfo.email)) {
+      selectors.customerResponse.innerHTML = "Error: Correo electrónico inválido.";
+      return; // Detener la ejecución si el correo electrónico no es válido
+    }
+    // Validación del número de teléfono
+  if (!isValidPhoneNumber(customerInfo.phone)) {
+    selectors.customerResponse.innerHTML = "Error: Número de teléfono inválido. Debe contener solo 9 dígitos.";
+    return;
+  }
+    
     //validar solo US o PE
     if (!['US', 'PE'].includes(customerInfo.countryCode)) {
       selectors.customerResponse.innerHTML = "Error: Código de país inválido. Solo se acepta 'US' o 'PE'.";
