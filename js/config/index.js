@@ -10,3 +10,11 @@ export const checkoutConfig = Object.freeze({
   URL_BASE: "http://localhost/culqi-demos-Php-checkout-charge"
 });
 
+export const chargeInfo = {
+  firstName: "Dennis",
+  lastName: "Demo",
+  address: "Av siempre viva",
+  addressCity: "Lima",
+  phone: "999999999",
+  email: "review1" + Math.floor(Math.random() * 100) + "@culqi.com"
+};
