@@ -8,7 +8,6 @@ export const generateOrderImpl = async () => {
   currentDate.setDate(currentDate.getDate() + 1);
   var epochMilliseconds = currentDate.getTime();
   var epochSeconds = Math.floor(epochMilliseconds / 1000);
-  console.log(epochSeconds);
 
   const bodyRequest = {
     amount: checkoutConfig.TOTAL_AMOUNT,
