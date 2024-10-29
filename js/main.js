@@ -1,5 +1,5 @@
 import { checkoutConfig } from "./config/index.js";
-import { generateCustomerData } from './utils/helpers.js';
+import { generateCustomerData, isValidEmail, isValidPhoneNumber } from './utils/helpers.js';
 import { culqiConfig } from "./config/checkout.js";
 import "./config/culqi3ds.js";
 import {
@@ -193,17 +193,6 @@ const handledContentLoad = async () => {
       }
     };
     Culqi3DS.initAuthentication(tokenId);
-  };
-
-  //validar 
-  const isValidEmail = (email) => {
-    const re = /^[a-zA-Z0-9._]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/;
-    return re.test(email);
-  };
-
-  const isValidPhoneNumber = (phoneNumber) => {
-    const re = /^\d{9}$/; // Solo acepta 9 dígitos.
-    return re.test(phoneNumber);
   };
 
   const createCustomer = async () => { 

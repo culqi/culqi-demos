@@ -3,6 +3,16 @@ export const formatAmount = (amount) => {
     const decimalAmount = amountStringified.length - 2;
     return `${amountStringified.slice(0, decimalAmount)}.${amountStringified.slice(decimalAmount)}`
 }
+export const isValidEmail = (email) => {
+  const re = /^[a-zA-Z0-9._]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/;
+  return re.test(email);
+};
+
+export const isValidPhoneNumber = (phoneNumber) => {
+  const re = /^9\d{8}$/; // Solo acepta números que comiencen con '9' y tengan 9 dígitos.
+  return re.test(phoneNumber);
+};
+
 export function generateRandomEmail() {
     const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
     const domains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'culqi.com'];
