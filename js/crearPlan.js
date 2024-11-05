@@ -1,4 +1,5 @@
 import { checkoutConfig } from "../js/config/index.js";
+import { PlanV } from "../js/utils/helpers.js";
 
 $("#response-panel3").hide();
 $('#crearPlan').on('click', function (e) {
@@ -13,6 +14,15 @@ $('#crearPlan').on('click', function (e) {
   var interval_unit_time = $('#interval_unit_time').val();
   var  pay_info= $('#pay_info').val();
   var BASE_URL = `${checkoutConfig.URL_BASE}`;
+
+   // Llamar a la función de validación con los parámetros
+   const validationResponse = PlanV(name, short_name, description, currency, amount, interval_count, initial_cycles, interval_unit_time, pay_info);
+
+   // Si la validación falla, mostrar el mensaje y detener la ejecución
+   if (validationResponse.error) {
+     resultdiv3(validationResponse.error);
+     return; // Detener la ejecución si hay un error
+   }
  
   $.ajax({
     type: 'POST',

@@ -13,7 +13,47 @@ include_once '../settings.php';
   // Configurar tu API Key y autenticación
 $culqi = new Culqi(array('api_key' => SECRET_API_KEY));
 
+// Lista de campos requeridos
+$requiredFields = ['name', 'short_name', 'description', 'currency', 'amount', 'interval_count', 'initial_cycles', 'interval_unit_time'];
+
+// Verificación de campos vacíos
+foreach ($requiredFields as $field) {
+    if (!isset($_POST[$field]) || $_POST[$field] === '') {
+        http_response_code(400);
+        echo json_encode(["error" => "El campo '$field' es obligatorio"]);
+        exit();
+    }
+}
+
 try {
+
+  // Validación conjunta para amount, initial_cycles y interval_count
+  $invalidField = null;
+  $errorMessage = "";
+
+  // Validación para amount que debe estar entre 300 y 5000
+  if ((int)$_POST["amount"] < 300 || (int)$_POST["amount"] > 5000) {
+      $invalidField = 'amount';
+      $errorMessage = "El campo amount debe estar entre 300 y 5000.";
+  }
+  // Validación para initial_cycles que debe ser 0 o mayor
+  elseif ((int)$_POST["initial_cycles"] < 0) {
+      $invalidField = 'initial_cycles';
+      $errorMessage = "El campo initial_cycles debe ser 0 o mayor.";
+  }
+  // Validación para interval_count que debe ser 0 o mayor
+  elseif ((int)$_POST["interval_count"] < 0) {
+      $invalidField = 'interval_count';
+      $errorMessage = "El campo interval_count debe ser 0 o mayor.";
+  }
+
+  // Enviar error si alguno de los campos es inválido
+  if ($invalidField) {
+      http_response_code(400);
+      echo json_encode(["error" => $errorMessage]);
+      exit();
+  }
+  
   // Creando el plan en Culqi
   $plan = $culqi->Plans->create([
     "name" => $_POST["name"]. uniqid(),
