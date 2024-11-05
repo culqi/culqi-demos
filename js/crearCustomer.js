@@ -1,4 +1,6 @@
 import { checkoutConfig } from "../js/config/index.js";
+import { CustomerV } from "../js/utils/helpers.js";
+
 $("#response-panel1").hide();
 $('#crearCustomer').on('click', function (e) {
   var address = $("#address").val().replace(/\s+/g, '');
@@ -9,6 +11,15 @@ $('#crearCustomer').on('click', function (e) {
   var l_name = $('#l_name').val().replace(/\s+/g, '');
   var phone = $('#phone').val().replace(/\s+/g, '');
   var BASE_URL = `${checkoutConfig.URL_BASE}`;
+
+  // Llamar a la función CustomerV y obtener el resultado
+  const validationResult = CustomerV(f_name, l_name, email, phone, address, address_c, country);
+
+  // Verificar si la validación ha fallado
+  if (validationResult.error) {
+      resultdiv(validationResult.error); // Mostrar el mensaje de error
+      return; // Terminar si no es válido
+  }
 
   $.ajax({
     type: 'POST',
