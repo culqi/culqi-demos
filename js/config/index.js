@@ -2,9 +2,10 @@
 export const checkoutConfig = Object.freeze({
   TOTAL_AMOUNT: 600,
   CURRENCY: "PEN",
-  PUBLIC_KEY: "INSERTE_SU_LLAVE_PUBLICA",//INSERTE_SU_LLAVE_PUBLICA
+  PUBLIC_KEY: "<<LLAVE PÚBLICA>>",
   COUNTRY_CODE: "PE",
-  RSA_ID: "INSERTE_SU_RSA_ID",
-  RSA_PUBLIC_KEY: "INSERTE_SU_LLAVE_RSA",
-  URL_BASE: "http://localhost/culqi-demos-feature-ajustes-demo-recurrencia-v"
+  RSA_ID: "<<RSA ID>>",
+  RSA_PUBLIC_KEY: "<<LLAVE PúBLICA RSA>>",
+  ACTIVE_ENCRYPT: false,
+  URL_BASE: "http://localhost/culqi-demos-Php-checkout-charge"
 });
