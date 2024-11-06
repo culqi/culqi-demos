@@ -1,10 +1,16 @@
 import { checkoutConfig } from "../js/config/index.js";
+import { SuscripcionV } from "../js/utils/helpers.js";
+
 $("#response-panel4").hide();
 $('#crearSuscripcion').on('click', function (e) {
-  var idPlan = $("#idPlan").val();
-  var idCard = $('#idCard').val();
-  console.log("id Plan "+idPlan, "Id Card"+idCard);
+  var idPlan = $("#idPlan").val().replace(/\s+/g, '');
+  var idCard = $('#idCard').val().replace(/\s+/g, '');
   var BASE_URL = `${checkoutConfig.URL_BASE}`;
+
+  var data = { idPlan, idCard };
+  if (!SuscripcionV(data)) {
+    return;
+  }
 
   $.ajax({
     type: 'POST',
@@ -27,7 +33,9 @@ $('#crearSuscripcion').on('click', function (e) {
       }
     },
     error: function(error) {
-      resultdiv4(error)
+      console.log(error.responseJSON);
+      var e= JSON.parse(error.responseJSON);
+      resultdiv4(e.merchant_message)
     }
   });
     function resultdiv4(message){

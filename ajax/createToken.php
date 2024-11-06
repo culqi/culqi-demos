@@ -6,9 +6,6 @@
 
 try {
   // Usando Composer (o puedes incluir las dependencias manualmente)
-  //  require '../Requests-master/library/Requests.php';
-  // Requests::register_autoloader();
-  // require '../lib/culqi.php';
   include_once dirname(__FILE__) . '/../vendor/culqi/culqi-php/lib/culqi.php';
   include_once '../settings.php';
 

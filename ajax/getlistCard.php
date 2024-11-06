@@ -7,9 +7,6 @@
 
  header('Content-Type: application/json');
 
-  //  require '../Requests-master/library/Requests.php';
-  //  Requests::register_autoloader();
-  //  require '../lib/culqi.php';
   include_once dirname(__FILE__) . '/../vendor/culqi/culqi-php/lib/culqi.php';
   require dirname(__FILE__) . '/../vendor/autoload.php';
    include_once '../settings.php';
@@ -20,8 +17,7 @@
   $culqi = new Culqi(array('api_key' => SECRET_API_KEY));
 try {
   // Creando Cargo a una tarjeta
-  $card = $culqi->Cards->all();//no te olvides modificar esto por all y probar que funcione sino volver getList
-  // RespuestaA
+  $card = $culqi->Cards->all();
   echo json_encode($card);
 
 } catch (Exception $e) {

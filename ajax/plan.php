@@ -26,34 +26,34 @@ foreach ($requiredFields as $field) {
 }
 
 try {
+    
+   // Validación conjunta para amount, initial_cycles y interval_count
+    $invalidField = null;
+    $errorMessage = "";
 
-  // Validación conjunta para amount, initial_cycles y interval_count
-  $invalidField = null;
-  $errorMessage = "";
+    // Validación para amount que debe estar entre 300 y 5000
+    if ((int)$_POST["amount"] < 300 || (int)$_POST["amount"] > 5000) {
+        $invalidField = 'amount';
+        $errorMessage = "El campo amount debe estar entre 300 y 5000.";
+    }
+    // Validación para initial_cycles que debe ser 0 o mayor
+    elseif ((int)$_POST["initial_cycles"] < 0) {
+        $invalidField = 'initial_cycles';
+        $errorMessage = "El campo initial_cycles debe ser 0 o mayor.";
+    }
+    // Validación para interval_count que debe ser 0 o mayor
+    elseif ((int)$_POST["interval_count"] < 0) {
+        $invalidField = 'interval_count';
+        $errorMessage = "El campo interval_count debe ser 0 o mayor.";
+    }
 
-  // Validación para amount que debe estar entre 300 y 5000
-  if ((int)$_POST["amount"] < 300 || (int)$_POST["amount"] > 5000) {
-      $invalidField = 'amount';
-      $errorMessage = "El campo amount debe estar entre 300 y 5000.";
-  }
-  // Validación para initial_cycles que debe ser 0 o mayor
-  elseif ((int)$_POST["initial_cycles"] < 0) {
-      $invalidField = 'initial_cycles';
-      $errorMessage = "El campo initial_cycles debe ser 0 o mayor.";
-  }
-  // Validación para interval_count que debe ser 0 o mayor
-  elseif ((int)$_POST["interval_count"] < 0) {
-      $invalidField = 'interval_count';
-      $errorMessage = "El campo interval_count debe ser 0 o mayor.";
-  }
+    // Enviar error si alguno de los campos es inválido
+    if ($invalidField) {
+        http_response_code(400);
+        echo json_encode(["error" => $errorMessage]);
+        exit();
+    }
 
-  // Enviar error si alguno de los campos es inválido
-  if ($invalidField) {
-      http_response_code(400);
-      echo json_encode(["error" => $errorMessage]);
-      exit();
-  }
-  
   // Creando el plan en Culqi
   $plan = $culqi->Plans->create([
     "name" => $_POST["name"]. uniqid(),
@@ -73,10 +73,10 @@ try {
     "metadata" => json_decode("{}"),
     // Otros campos opcionales como image, pay_info, etc.
 ]);
-
+ 
   echo json_encode($plan);
 
 } catch (Exception $e) {
+  http_response_code(400);
   echo json_encode($e->getMessage());
 }
-?>
