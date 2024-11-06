@@ -7,6 +7,17 @@ include_once '../settings.php';
 use Culqi\Culqi;
 
 $culqi = new Culqi(array('api_key' => SECRET_API_KEY));
+
+// Verificación de campos requeridos
+$requiredFields = ['idPlan', 'idCard'];
+foreach ($requiredFields as $field) {
+    if (!isset($_POST[$field]) || $_POST[$field] === '') {
+        http_response_code(400);
+        echo json_encode(["error" => "El campo '$field' es obligatorio."]);
+        exit();
+    }
+}
+
 try {
 // Creando Cargo a una tarjeta
 $subscription = $culqi->Subscriptions->create(

@@ -24,7 +24,7 @@ $('#crearPlan').on('click', function (e) {
      return; // Detener la ejecución si hay un error
    }
  
-  $.ajax({
+   $.ajax({
     type: 'POST',
     url: BASE_URL+"/ajax/plan.php",
     data: { name , short_name , description, currency , amount , interval_count , 
@@ -34,12 +34,13 @@ $('#crearPlan').on('click', function (e) {
       var result3 = "";
       if(data.constructor == String){
           result3 = JSON.parse(data);
-      }alert
+      }
       if(data.constructor == Object){
           result3 = JSON.parse(JSON.stringify(data));
       }
-      if(result3.id != null){
-      resultdiv3('Se creo el objeto Plan con el siguiente ID: ' + result3.id);
+      if (result3.id != null) {
+        $("#idPlan").val(result3.id); // Intentar asignar el ID al input
+        resultdiv3('Se creó el objeto Plan con el siguiente ID: ' + result3.id);
       }
       if(result3.object === 'error'){
           resultdiv3(result3);
@@ -47,10 +48,12 @@ $('#crearPlan').on('click', function (e) {
       }
     },
     error: function(error) {
-      resultdiv3(error)
+      if (error.status === 400 && error.responseJSON.error) {
+        resultdiv3(error.responseJSON.error);
+        alert("Error: " + error.responseJSON.error);
+      }
     }
   });
-
 
   function resultdiv3(message){
     $('#response-panel3').show();

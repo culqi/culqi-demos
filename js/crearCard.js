@@ -29,8 +29,7 @@ const appearance = {
   hiddenToolBarAmount: false,
   menuType: "sidebar", // sidebar / sliderTop / select
   buttonCardPayText: "Pagar tal monto", // 
-  logo: null, // 'http://www.childrensociety.ms/wp-content/uploads/2019/11/MCS-Logo-2019-no-text.jpg',
-  
+  logo: null,
   defaultStyle: {
       bannerColor: "black", // hexadecimal
       buttonBackground: "#8b5cf6", // hexadecimal

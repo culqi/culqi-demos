@@ -12,13 +12,10 @@ $('#crearCustomer').on('click', function (e) {
   var phone = $('#phone').val().replace(/\s+/g, '');
   var BASE_URL = `${checkoutConfig.URL_BASE}`;
 
-  // Llamar a la función CustomerV y obtener el resultado
   const validationResult = CustomerV(f_name, l_name, email, phone, address, address_c, country);
-
-  // Verificar si la validación ha fallado
   if (validationResult.error) {
-      resultdiv(validationResult.error); // Mostrar el mensaje de error
-      return; // Terminar si no es válido
+      resultdiv(validationResult.error);
+      return; 
   }
 
   $.ajax({
@@ -39,16 +36,17 @@ $('#crearCustomer').on('click', function (e) {
         resultdiv('Se creo el objeto Customer con el siguiente ID: ' + result.id);
       }
       if (result.object === 'error') {
-        if (result.merchant_message.includes("Invalid value. It must be")) {
-          resultdiv("Error de código de país");
-        } else {
-          resultdiv(result.merchant_message); 
-        }
+        resultdiv(error) 
   
       }
     },
     error: function (error) {
-      resultdiv(error)
+      var e= JSON.parse(error.responseJSON);
+      if (e.merchant_message.includes("Invalid value. It must be")) {
+        resultdiv("Error de código de país");
+      }else {
+        resultdiv(e.merchant_message); 
+      }
     }
   });
   function resultdiv(message) {
@@ -56,3 +54,4 @@ $('#crearCustomer').on('click', function (e) {
     $('#response1').html(message);
   }
 });
+

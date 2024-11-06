@@ -5,13 +5,10 @@
  */
 header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json');
-// require '../Requests-master/library/Requests.php';
-// Requests::register_autoloader();
-// require '../lib/culqi.php';
+
 include_once dirname(__FILE__) . '/../vendor/culqi/culqi-php/lib/culqi.php';
 require dirname(__FILE__) . '/../vendor/autoload.php';
 include_once '../settings.php';
-
 
 use Culqi\Culqi;
 
