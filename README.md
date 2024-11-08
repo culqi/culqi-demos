@@ -45,14 +45,14 @@ Para configurar los datos del cargo, pk del comercio y datos del cliente se tien
 Puedes activar la encriptación o desactivarla.
 
 ```js
-export default Object.freeze({
+export const checkoutConfig = Object.freeze({
     TOTAL_AMOUNT: 600, // monto de pago,
     CURRENCY: "PEN",// tipo de moneda,
     PUBLIC_KEY: "<<LLAVE PÚBLICA>>", // llave publica del comercio (pk_test_xxxxx),
     RSA_ID: "<<LLAVE PÚBLICA RSA ID>>", //Id de la llave RSA,
     RSA_PUBLIC_KEY: "<<LLAVE PÚBLICA RSA>>", // Llave pública RSA que sirve para encriptar el payload de los servicios del checkout,
     COUNTRY_CODE: "PE", // iso code del país
-    ACTIVE_ENCRYPT: true (true = encyptación activada , false = encyptación inactivada)
+    URL_BASE: "http://localhost/(ruta del archivo)"
 });
 ```
 
