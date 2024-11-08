@@ -14,9 +14,15 @@ class Service {
         },
         data
       });
-      return { statusCode: response.status, data: response.data };
+
+      let dataParse = response.data
+      if (typeof response.data === "string") {
+        dataParse = JSON.parse(response.data);
+      }      
+      return { statusCode: response.status, data: dataParse };
     } catch (err) {
-      return { statusCode: err.response.status, data: err.response.data };
+      let dataError = JSON.parse(err.response.data);
+      return { statusCode: err.response.status, data: dataError  };
     }
   };
 

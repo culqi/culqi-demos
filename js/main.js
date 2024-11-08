@@ -1,4 +1,5 @@
-import { checkoutConfig, customerInfo } from "./config/index.js";
+import { checkoutConfig } from "./config/index.js";
+import { generateCustomerData, isValidEmail, isValidPhoneNumber } from './utils/helpers.js';
 import { culqiConfig } from "./config/checkout.js";
 import "./config/culqi3ds.js";
 import {
@@ -76,15 +77,15 @@ const handledContentLoad = async () => {
       });
     }
 
-    objResponse = response.data.object;
+    objResponse = response.data;
     statusCode = response.statusCode;
 
     console.log("Status code: ", statusCode);
 
     if (statusCode === 201) {
-      if (objResponse === "charge" || objResponse === "card") {
+      if (objResponse.object === "charge" || objResponse.object === "card") {
         selectors.cardResponseList.forEach((el) => {
-          el.innerHTML = "OPERACIÓN REALIZADA EXITOSAMENTE";
+          el.innerHTML = "OPERACIÓN REALIZADA EXITOSAMENTE<br>ID: "+ objResponse.id;
         });
       }
     }
@@ -194,38 +195,69 @@ const handledContentLoad = async () => {
     Culqi3DS.initAuthentication(tokenId);
   };
 
-  const createCustomer = async () => {
+  const createCustomer = async () => { 
     selectors.customerResponse.innerHTML = spinerHtml;
+    
+    const customerInfo = {
+      firstName: selectors.customersFirstNameElement.value,
+      lastName: selectors.customersLastNameElement.value,
+      address: selectors.customersAddressElement.value,
+      addressCity: selectors.customersAddressCityElement.value,
+      countryCode: selectors.customersCountryCodeElement.value ,
+      phone: selectors.customersPhoneElement.value.replace(/\s/g, ""),
+      email: selectors.customersEmailElement.value 
+    };
+    // Validar si algún campo requerido está vacío
+    const emptyFields = Object.entries(customerInfo).filter(([key, value]) => !value);
+  
+  if (emptyFields.length > 0) {
+    selectors.customerResponse.innerHTML = `Error: El campo ${emptyFields[0][0]} está vacío.`; 
+    return; // Detener la ejecución si algún campo está vacío
+  }
+  
+    // Validar el correo electrónico
+    if (!isValidEmail(customerInfo.email)) {
+      selectors.customerResponse.innerHTML = "Error: Correo electrónico inválido.";
+      return; // Detener la ejecución si el correo electrónico no es válido
+    }
+    // Validación del número de teléfono
+  if (!isValidPhoneNumber(customerInfo.phone)) {
+    selectors.customerResponse.innerHTML = "Error: Número de teléfono inválido. Debe contener solo 9 dígitos.";
+    return;
+  }
+    
+    //validar solo US o PE
+    if (!['US', 'PE'].includes(customerInfo.countryCode)) {
+      selectors.customerResponse.innerHTML = "Error: Código de país inválido. Solo se acepta 'US' o 'PE'.";
+      return; // Detener la ejecución si el código de país no es válido
+    }
     const dataCustomer = await createCustomerImpl({
-      ...customerInfo
+      ...customerInfo //captura del front la data de los input armar object customerInfo
     });
-
-    selectors.customerCustomFormElement.value = dataCustomer.data.id;
-
-    selectors.customerResponse.innerHTML = dataCustomer.data.id;
+  
+    if ( dataCustomer.data.object === "error") {
+      if (dataCustomer.data.merchant_message.includes("Invalid value. It must be")) {
+        selectors.customerResponse.innerHTML = "Error de código de país";//mensaje countryCode
+      }else{
+      selectors.customerResponse.innerHTML = dataCustomer.data.merchant_message;//error general
+      }
+    } else {
+      selectors.customerCustomFormElement.value = dataCustomer.data.id;
+      selectors.customerResponse.innerHTML = dataCustomer.data.id;//id
+    }
+    
   };
 
   const loadCustomerExampleData = () => {
+    const customerInfo = generateCustomerData();
     Object.keys(customerInfo).forEach((key) => {
       const selectorOption =
         selectors[
           `customers${key.charAt(0).toUpperCase() + key.slice(1)}Element`
-        ];
+        ];      
       if (selectorOption) {
-        selectorOption.value = customerInfo[key];
-      }
-    });
-  };
 
-  // Función para actualizar los datos del cliente
-  const updateCustomerInfo = () => {
-    Object.keys(customerInfo).forEach((key) => {
-      const selectorOption =
-        selectors[
-          `customers${key.charAt(0).toUpperCase() + key.slice(1)}Element`
-        ];
-      if (selectorOption) {
-        customerInfo[key] = selectorOption.value;
+        selectorOption.value = customerInfo[key];
       }
     });
   };
@@ -248,7 +280,6 @@ const handledContentLoad = async () => {
 
   if (btnCreateCustomer) {
     btnCreateCustomer.addEventListener("click", () => {
-      updateCustomerInfo();
       createCustomer();
     });
   }

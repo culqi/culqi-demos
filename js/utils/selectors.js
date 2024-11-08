@@ -18,6 +18,7 @@ export const customersLastNameElement = document.getElementById("lastName");
 export const customersAddressElement = document.getElementById("address");
 export const customersAddressCityElement =
   document.getElementById("addressCity");
+export const customersCountryCodeElement = document.getElementById("countryCode");
 export const customersEmailElement = document.getElementById("email");
 export const customersPhoneElement = document.getElementById("phone");
 /* END customer */
