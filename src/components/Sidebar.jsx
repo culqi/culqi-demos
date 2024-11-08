@@ -18,7 +18,7 @@ const SideBar = () => {
           className="flex items-center pl-2.5 mb-5"
         >
           <img
-            src="https://culqi.com/assets/images/brand/brandCulqi-white.svg"
+            src="https://culqi.com/assets/images/brand/culqi-logo.png?v=2"
             className="mr-3 h-6 sm:h-7"
             alt="Culqi Logo"
           />

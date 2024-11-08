@@ -10,7 +10,7 @@ const App = () => {
         <div className="max-w-7xl mt-10 mx-auto w-full flex flex-col sm:flex-row flex-grow overflow-hidden">
           <Sidebar />
           <div className="w-full p-6 px-6 grid grid-cols-1 gap-4 place-content-center place-items-center">
-            <h1 className="my-6 text-xl font-bold text-center">PYTHON DEMO</h1>
+            <h1 className="my-6 text-xl font-bold text-center">REACT DEMO</h1>
             <h2 className="text-xl font-bold text-purple-800">
               CULQI - CUSTOM CHECKOUT
             </h2>
