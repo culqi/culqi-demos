@@ -3,7 +3,7 @@
 //Se debe editar la llave pública (PUBLIC_KEY) de tu comercio en js->config->index.js
 
 define('PUBLIC_KEY', '<<LLAVE PÚBLICA>>');
-define('SECRET_KEY', "<<LLAVE PRIVADA>>");
+define('SECRET_API_KEY', "<<LLAVE PRIVADA>>");
 define('RSA_ID', "<<RSA ID>>");
 define('RSA_PUBLIC_KEY', '<<LLAVE PúBLICA RSA>>');
 define('EMAIL_CUSTOMER', 'prueba1@culqi.com');
