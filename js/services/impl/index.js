@@ -1,5 +1,5 @@
 import Service from "../index.js";
-import { checkoutConfig, customerInfo } from "../../config/index.js";
+import { checkoutConfig, chargeInfo } from "../../config/index.js";
 
 const service = new Service();
 
@@ -15,10 +15,10 @@ export const generateOrderImpl = async () => {
     description: "Venta de prueba",
     order_number: "pedido-" + new Date().getTime(),
     client_details: {
-      first_name: customerInfo.firstName,
-      last_name: customerInfo.lastName,
-      email: customerInfo.email,
-      phone_number: customerInfo.phone
+      first_name: chargeInfo.firstName,
+      last_name: chargeInfo.lastName,
+      email: chargeInfo.email,
+      phone_number: chargeInfo.phone
     },
     expiration_date: epochSeconds
   };
@@ -36,9 +36,9 @@ export const generateChargeImpl = async ({
     currency_code: checkoutConfig.CURRENCY,
     email: email,
     token: tokenId,
-    first_name: customerInfo.firstName,
-    last_name: customerInfo.lastName,
-    phone_number: customerInfo.phone,
+    first_name: chargeInfo.firstName,
+    last_name: chargeInfo.lastName,
+    phone_number: chargeInfo.phone,
     device_finger_print_id: deviceId
   };
   return service.generateCharge(
