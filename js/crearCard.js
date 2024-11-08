@@ -57,12 +57,9 @@ const config = {
   appearance,
 };
 
-
-
 const handleCulqiAction = () => {
   if (Culqi.token) {
     const token = Culqi.token.id;
-    console.log('Se ha creado un Token: ', token);
     createCard(token);
   } else {
     console.log('Errorrr : ', Culqi.error);
@@ -119,8 +116,6 @@ $('#crearCard').on('click', function (e) {
   e.preventDefault();
   console.log(Culqi.token);
 });
-
-
 
 function resultdiv2(message) {
   $('#response-panel2').show();
