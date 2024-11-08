@@ -44,6 +44,13 @@
         font-family: 'Poppins', sans-serif; 
         text-align: center; 
       }
+
+      .no-arrows::-webkit-outer-spin-button,
+      .no-arrows::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
     </style>
   </head>
 
@@ -108,9 +115,9 @@
                 <div class="flex-1">
                   <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Monto</label>
                   <input type="number"
-                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    class="appearance-none no-arrows block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="monto_plan"
-                    placeholder="Min 3.00 a 50000.00"
+                    placeholder="Min 300 a 500000"
                     required />
                 </div>
                 <div class="flex-1">
@@ -143,7 +150,7 @@
                 <div class="flex-1">
                   <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Cant. intervalos</label>
                   <input type="number"
-                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    class="appearance-none no-arrows block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="interval_count"
                     placeholder="Cantidad intervalos entre cargos"
                     required />
@@ -151,7 +158,7 @@
                 <div class="flex-1">
                   <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Ciclo inicial</label>
                   <input type="number"
-                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    class="appearance-none no-arrows block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="ciclo_inicial"
                     placeholder="Ciclos iniciales del plan"
                     required />
