@@ -262,19 +262,6 @@ const handledContentLoad = async () => {
     });
   };
 
-  // Función para actualizar los datos del cliente
-  const updateCustomerInfo = () => {
-    Object.keys(customerInfo).forEach((key) => {
-      const selectorOption =
-        selectors[
-          `customers${key.charAt(0).toUpperCase() + key.slice(1)}Element`
-        ];
-      if (selectorOption) {
-        customerInfo[key] = selectorOption.value;
-      }
-    });
-  };
-
   // Función para abrir el formulario de Culqi
   const openCulqiForm = (e) => {
     culqiInstance.open();
@@ -293,7 +280,6 @@ const handledContentLoad = async () => {
 
   if (btnCreateCustomer) {
     btnCreateCustomer.addEventListener("click", () => {
-      updateCustomerInfo();
       createCustomer();
     });
   }
