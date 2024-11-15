@@ -51,7 +51,7 @@ const WithCard = () => {
     });
 
     if (status === 201 && data.object === "charge") {
-      setChargeMessage("OPERACIÓN REALIZADA EXITOSAMENTE CON 3DS");
+      setChargeMessage("OPERACIÓN REALIZADA EXITOSAMENTE CON 3DS. El ID: "+ data.id);
     }
     Culqi3DS.current.reset();
   };
@@ -74,7 +74,7 @@ const WithCard = () => {
         message = "ERROR AL REALIZAR LA OPERACIÓN";
         break;
       case 201:
-        message = "OPERACIÓN EXITOSA - SIN 3DS";
+        message = `OPERACIÓN EXITOSA - SIN 3DS. El ID: ${objResponse.id}`;
         Culqi3DS.current.reset();
         break;
       default:
