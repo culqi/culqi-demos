@@ -90,7 +90,6 @@ class CartController
           $item['quantity'] -= $quantity;
           if ($item['quantity'] <= 0) {
             $cart = $this->delete($id);
-            dd($cart);
             break;
           }
         }
