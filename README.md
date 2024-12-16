@@ -75,7 +75,7 @@ php -S localhost:8000 -t public
 
 ## Contribuciones
 
-- Dennis Villagaray Gormas
+- Dennis Villagaray
 
 ## Licencia
 
