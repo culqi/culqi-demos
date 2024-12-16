@@ -45,11 +45,6 @@ class Router
 
   public function put($uri, $controller, $action = 'update')
   {
-    // muestra $uri en la terminal donde se está ejecutando el proyecto
-    // remueve el id de la ruta
-    // echo $uri;
-
-    // $uri = str_replace('{id}', '', $uri);
     return $this->add('PUT', $uri, $controller, $action);
   }
 
@@ -64,53 +59,6 @@ class Router
 
     return $this;
   }
-  /*
-    public function route($uri, $method)
-    {
-      foreach ($this->routes as $route) {
-        // Convertir la URI de la ruta en un patrón de expresión regular
-        $pattern = preg_replace('#\{([a-zA-Z0-9_]+)\}#', '(?P<$1>[a-zA-Z0-9_-]+)', $route['uri']);
-        $pattern = "#^" . $pattern . "$#";
-
-        if (preg_match($pattern, $uri, $matches) && $route['method'] === strtoupper($method)) {
-          Middleware::resolve($route['middleware']);
-
-          // Cargar la clase del controlador desde su namespace
-          $controllerName = "App\\Controllers\\" . str_replace('/', '\\', $route['controller']);
-
-          if (class_exists($controllerName)) {
-            $controller = new $controllerName();
-
-            // Filtrar parámetros de la ruta (nombres de captura en el patrón)
-            $params = array_filter($matches, 'is_string', ARRAY_FILTER_USE_KEY);
-
-            // Determinar el método a ejecutar
-            $action = $route['action'];
-
-            if (method_exists($controller, $action)) {
-              if ($method === 'GET') {
-                $layout = $route['layout'];
-                ob_start();
-                $controller->{$action}();
-                $content = ob_get_clean();
-                require base_path('resources/views/layouts/' . $layout);
-              } else {
-                echo json_encode(call_user_func_array([$controller, $action], $params)); // Pasar los parámetros al método
-              }
-            } else {
-              $this->abort(404); // Método no encontrado
-            }
-
-            return;
-          }
-
-          $this->abort(404); // Clase no encontrada
-        }
-      }
-      $this->abort(404); // Ruta no encontrada
-    }
-    */
-
   public function route($uri, $method)
   {
     foreach ($this->routes as $route) {
