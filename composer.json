@@ -1,0 +1,43 @@
+{
+  "name": "culqi/php-demo",
+  "description": "Cliente Culqi API para PHP",
+  "keywords": [
+    "culqi",
+    "client",
+    "api",
+    "peru",
+    "php",
+    "payments",
+    "pagos"
+  ],
+  "homepage": "https://culqi.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dennis Villagaray",
+      "homepage": "https://github.com/dennisvillagaray",
+      "email": "dennis.villagarayg@gmail.com"
+    },
+    {
+      "name": "Culqi and contributors",
+      "homepage": "https://github.com/culqi/culqi-php/contributors"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Core\\": "app/Core/",
+      "Controllers\\": "app/Controllers",
+      "Middleware\\": "app/Middleware"
+    }
+  },
+  "require-dev": {
+    "pestphp/pest": "^2.5"
+  },
+  "require": {
+    "culqi/culqi-php": "^2.0",
+    "tmarois/filebase": "^1.0",
+    "illuminate/collections": "^10.9",
+    "ext-pdo": "*"
+  }
+}
