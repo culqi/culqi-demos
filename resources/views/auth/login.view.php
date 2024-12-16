@@ -1,6 +1,5 @@
 <?php
 $title = 'Login';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = trim($_POST['email']);
   $password = trim($_POST['password']);
@@ -9,10 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $passwordIsValid = strlen($password) >= 8;
 
   if ($emailIsValid && $passwordIsValid) {
-    // Procesa el login
     echo "Login successful!";
   } else {
-    // Retorna errores al usuario
     echo "Invalid input.";
   }
 }
@@ -39,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="text-red-500 text-xs hidden" id="passwordError">La contraseña debe tener al menos 8 caracteres</p>
       </div>
       <div class="flex items-center justify-between">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" id="submitButton" disabled>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="submitButton" disabled>
           Iniciar Sesión
         </button>
       </div>
