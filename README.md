@@ -1,43 +1,82 @@
-# Culqi-demos
+# PHP Demo Custom Checkout
 
-Este es el repositorio oficial de demos de Culqi. Aquí encontrarás ejemplos de integración con nuestras librerías de Checkout, 3DS y APIs en varios lenguajes de programación. Cada demo es un proyecto pequeño que muestra cómo integrar y utilizar nuestras librerías y servicios. Si eres desarrollador y estás buscando una forma rápida de entender cómo trabajar con Culqi, este repositorio es un excelente punto de partida. ¡Esperamos que te sea útil!
+## Descripción del Proyecto
 
+Este proyecto es una demostración de un sistema de checkout personalizado desarrollado en PHP. Incluye funcionalidades para gestionar productos, un carrito de compras y un proceso de pago. El proyecto utiliza varias tecnologías y patrones de diseño para asegurar una arquitectura limpia y mantenible.
 
-## Diagrama de Flujo de Integración
+## Tecnologías Utilizadas
 
-El siguiente diagrama de flujo proporciona una visión general de cómo se estructuran nuestros proyectos demo en términos de servicios de API, Checkout y otros componentes. Cada nodo en el diagrama representa un componente específico de un proyecto demo.
+- **PHP**: Lenguaje de programación principal.
+- **Filebase**: Sistema de base de datos basado en archivos.
+- **Composer**: Gestor de dependencias para PHP.
+- **PSR-4**: Estándar de autoloading para PHP.
+- **MVC**: Patrón de diseño Modelo-Vista-Controlador.
 
-```mermaid
-flowchart TD
+## Estructura del Proyecto
 
-  api[api-services]
-  checkout[Checkout]
-  js-v4[Checkout JS-V4 \n with Culqi 3DS]
-  custom[Custom Checkout \n with Culqi 3DS]
-  soon[coming soon...]
-  %% charge[Cargos]
-  %% order[Ordenes]
-  %% customer[Clientes]
+- **app/**: Contiene los controladores, modelos, servicios y proveedores.
+- **public/**: Carpeta pública que contiene el archivo `index.php`.
+- **storage/**: Carpeta para almacenamiento de datos.
+- **vendor/**: Carpeta de dependencias gestionadas por Composer.
+- **bootstrap/**: Configuración inicial y registro de dependencias.
+- **routes/**: Definición de rutas del proyecto.
 
-  Frameworks[Languages / Frameworks]
-    Frameworks --> api
-    Frameworks --> checkout
-    checkout --> js-v4
-    checkout --> custom
-    api --> soon
-    %% api --> charge
-    %% api --> order
-    %% api --> customer
+## Cómo Funciona
 
-  start[Culqi Demo]
-  start --> Frameworks
+1. **Controladores**: Gestionan las solicitudes HTTP y coordinan las respuestas.
+2. **Modelos**: Representan los datos y la lógica de negocio.
+3. **Vistas**: Plantillas que renderizan la salida HTML.
+4. **Servicios**: Contienen la lógica de negocio reutilizable.
+5. **Proveedores**: Gestionan la configuración y la inicialización de servicios externos.
+
+## Cómo Levantar el Proyecto
+
+### Requisitos Previos
+
+- **PHP** >= 7.4
+- **Composer** instalado
+
+### Pasos para Levantar el Proyecto
+
+1. **Clonar el repositorio**:
+
+```bash
+git clone https://github.com/tu-usuario/php-demo-custom-checkout.git
+cd php-demo-custom-checkout
 ```
 
-Aquí tienes algunos enlaces a los proyectos demo que corresponden a los componentes del diagrama:
+2. **Instalar dependencias**:
 
-### PHP
-- [Demo Custom Checkout con Culqi 3DS](./php/checkout/custom-checkout-with-culqi3ds/README.md)
-- [Demo Checkout JSV4 con Culqi 3DS](./php/checkout/jsv4-with-culqi3ds/README.md)
+```bash
+composer install
+```
 
-### JAVA
-- [DEMO Custom Checkout con Culqi 3DS](./java/checkout/custom-checkout-with-culqi3ds/README.md)
+3. **Configurar el entorno**:
+
+- Asegúrate de que la carpeta `products` exista y tenga permisos de escritura.
+
+4. **Agregar datos dummy**:
+
+- Ejecuta los scripts desde la carpeta scripts para agregar datos dummy:
+
+```bash
+php scripts/add_dummy_data.php
+```
+
+5. **Levantar el servidor**:
+
+```bash
+php -S localhost:8000 -t public
+```
+
+6. **Acceder a la aplicación**:
+
+- Abre tu navegador y ve a `http://localhost:8000`.
+
+## Contribuciones
+
+- Dennis Villagaray Gormas
+
+## Licencia
+
+Este proyecto está licenciado bajo la `Licencia MIT`. Consulta el archivo LICENSE para más detalles.
