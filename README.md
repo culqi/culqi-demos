@@ -60,7 +60,7 @@ composer install
 - Ejecuta los scripts desde la carpeta scripts para agregar datos dummy:
 
 ```bash
-php scripts/add_dummy_data.php
+php scripts/{{add_dummy_data}}.php
 ```
 
 5. **Levantar el servidor**:
