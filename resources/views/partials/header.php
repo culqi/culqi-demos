@@ -83,7 +83,18 @@
                                         </a>
                                     </li>
 
-                                    <li class="col d-none d-xl-block">
+                                    <li class="col d-none d-xl-block" style="flex: auto;">
+                                        <a href="javascript:;" role="button" id="sidebarNavTogglerLogin" class="text-white d-flex align-items-center"
+                                            data-unfold-event="click" data-unfold-hide-on-scroll="false" data-unfold-target="#sidebarContent"
+                                            data-unfold-type="css-animation" data-unfold-animation-in="fadeInRight"
+                                            data-unfold-animation-out="fadeOutRight" data-unfold-duration="500" data-target="#misTarjetas"
+                                            data-link-group="idForm" data-animation-in="slideInUp">
+                                            <i class="font-size-22 fas fa-credit-card me-2" style="margin-top: 6px;"></i>
+                                            <span style="margin-top: 4px; margin-left: 13px; margin-right: -26px;">Mis Tarjetas</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="col pr-xl-0 px-2 px-sm-3" style="margin-left: 23px;">
                                         <a href="javascript:;" id="btnLogout" role="button" class="text-white d-flex align-items-center">
 
                                             <i class="font-size-18 fas fa-user-lock me-2" style="margin-top: 6px;"></i>
@@ -99,7 +110,7 @@
                                                 id="cart-number-items">0</span>
                                         </a>
                                     </li>
-                                    <li class="pr-xl-0 px-2 px-sm-3 mt-2">
+                                    <li class="pr-xl-0 px-2 px-sm-3 mt-2" style="flex: none;">
                                         <span class="d-none d-xl-block font-weight-bold font-size-16 text-white ml-3" id="cart-total">
                                             S/ 0.00
                                         </span>

@@ -23,6 +23,8 @@
                             <?php require base_path('resources/views/auth/register.php') ?>
                             <!-- Profile -->
                             <?php require base_path('resources/views/auth/profile.php') ?>
+                            <!-- Cards -->
+                            <?php require base_path('resources/views/partials/cards.php') ?>
                         </div>
                     </div>
                 </div>
