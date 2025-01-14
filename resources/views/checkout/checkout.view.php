@@ -22,6 +22,11 @@ $constants = [
 $checkoutURL = Config::CHECKOUT_URL;
 ?>
 
+<style>
+    .font_fill {
+        font-size: 1.06225rem;
+    }
+</style>
 
 <div class="container">
     <div class="mb-5">
@@ -43,23 +48,25 @@ $checkoutURL = Config::CHECKOUT_URL;
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th class="product-name">Productos</th>
-                                    <th class="product-total">Total</th>
+                                    <th class="product-name font_fill">Productos</th>
+                                    <th class="product-total font_fill">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($cart as $item): ?>
                                     <tr class="cart_item">
-                                        <td><?= htmlspecialchars($item['name']) ?> <strong class="product-quantity">× <?= $item['quantity'] ?></strong>
+                                        <td class="product-name font_fill"><?= htmlspecialchars($item['name']) ?> <strong class="product-quantity">×
+                                                <?= $item['quantity'] ?></strong>
                                         </td>
-                                        <td>S/ <?= number_format($item['price'] * $item['quantity'], 2) ?></td>
+                                        <td class="product-price font_fill">S/
+                                            <?= number_format($item['price'] * $item['quantity'], 2) ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Total</th>
-                                    <td><strong>S/ <?= number_format($total, 2) ?></strong></td>
+                                    <th class="font_fill">Total</th>
+                                    <td class="font_fill"><strong>S/ <?= number_format($total, 2) ?></strong></td>
                                 </tr>
                             </tfoot>
                         </table>

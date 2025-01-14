@@ -1,8 +1,3 @@
-<?php if ($_SESSION['user'] ?? false): ?>
-<?php else: ?>
-<?php endif; ?>
-
-
 <div id="profile" style="display: none; opacity: 0;" data-target-group="idForm">
     <!-- Title -->
     <header class="text-center mb-7">
