@@ -1,7 +1,9 @@
-import { checkoutConfig } from "../config/index.js";
-
 class Service {
-  #BASE_URL = `${checkoutConfig.URL_BASE}`;
+  constructor(baseURL) {
+    this.#BASE_URL = baseURL;
+  }
+
+  #BASE_URL;
 
   #http = async ({ endPoint, method = "POST", data = {}, headers = {} }) => {
     try {
@@ -24,16 +26,16 @@ class Service {
     return this.#http({ endPoint: "ajax/order.php", data: bodyOrder });
   };
 
-  generateCharge = async (bodyCharges) => {
-    return this.#http({ endPoint: "ajax/charge.php", data: bodyCharges });
+  generateCharge = async (bodyCharges, Secret_key) => {
+    return this.#http({ endPoint: "charges", data: bodyCharges, headers: { Authorization: "Bearer " + Secret_key } });
   };
 
-  createCustomer = async (bodyCustomers) => {
-    return this.#http({ endPoint: "ajax/customer.php", data: bodyCustomers });
+  createCustomer = async (bodyCustomers, Secret_key) => {
+    return this.#http({ endPoint: "customers", data: bodyCustomers, headers: { Authorization: "Bearer " + Secret_key } });
   };
 
-  createCard = async (bodyCard) => {
-    return this.#http({ endPoint: "ajax/card.php", data: bodyCard });
+  createCard = async (bodyCard, Secret_key) => {
+    return this.#http({ endPoint: "cards", data: bodyCard, headers: { Authorization: "Bearer " + Secret_key } });
   };
 }
 

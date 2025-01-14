@@ -16,11 +16,17 @@ class CartController
 
   public function view()
   {
-    // Renderiza la vista del carrito
-    view('checkout/cart.view.php', [
-      'cartItems' => $_SESSION['cart'] ?? [],
-      'errors' => Session::get('errors'),
-      'title' => 'Carrito de Compras',
+    if (isset($_SESSION['user'])) {
+      view('checkout/cart.view.php', [
+        'cartItems' => $_SESSION['cart'] ?? [],
+        'errors' => Session::get('errors'),
+        'title' => 'Carrito de Compras',
+      ]);
+      return;
+    }
+    header('Location: /');
+    view('index.view.php', [
+      'title' => 'Login'
     ]);
   }
 
@@ -33,6 +39,7 @@ class CartController
       $total += $itemTotal;
       $items[] = [
         'name' => $item['name'],
+        'image' => $item['image'],
         'quantity' => $item['quantity'],
         'total' => $itemTotal,
         'id' => $id
@@ -52,6 +59,7 @@ class CartController
         $_SESSION['cart'][$productId] = [
           'id' => $product['id'],
           'name' => $product['name'],
+          'image' => $product['image'],
           'price' => $product['price'],
           'quantity' => 0,
         ];

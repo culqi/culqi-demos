@@ -47,12 +47,20 @@ class UserService
     return $this->userRepository->findByEmail($email);
   }
 
-  public function createUser($email, $password, $name)
+  public function createUser($password, $firstName, $lastName, $email, $address, $addressCity, $countryCode, $phoneNumber, $customerCode, $customerEmail)
   {
     $user = [
-      'email' => $email,
+      'id_user' => uniqid(),
       'password' => password_hash($password, PASSWORD_DEFAULT),
-      'name' => $name
+      'first_name' => $firstName,
+      'last_name' => $lastName,
+      'email' => $email,
+      'address' => $address,
+      'address_city' => $addressCity,
+      'country_code' => $countryCode,
+      'phone_number' => $phoneNumber,
+      'customer_code' => $customerCode,
+      'customer_email' => $customerEmail
     ];
 
     $this->userRepository->create($user);

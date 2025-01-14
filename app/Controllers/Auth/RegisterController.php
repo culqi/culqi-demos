@@ -23,11 +23,37 @@ class RegisterController
   public function register()
   {
     $input = json_decode(file_get_contents('php://input'), true);
-    $email = $input['email'] ?? null;
-    $password = $input['password'] ?? null;
-    $name = $input['name'] ?? null;
+    $customerCode = $input['customer_code'] ?? null;
+    $customerEmail = $input['customer_email'] ?? null;
 
-    $user = !$email ? null : $this->userService->createUser($email, $password, $name);
+    if (!$customerEmail || !$customerCode) {
+      http_response_code(400);
+      $response = array('isRegister' => false, 'message' => 'Invalid data received');
+      return json_encode($response);
+    }
+
+    $password = $input['password'] ?? null;
+    $firstName = $input['first_name'] ?? null;
+    $lastName = $input['last_name'] ?? null;
+    $email = $input['email'] ?? null;
+    $address = $input['address'] ?? null;
+    $addressCity = $input['address_city'] ?? null;
+    $countryCode = $input['country_code'] ?? null;
+    $phoneNumber = $input['phone_number'] ?? null;
+
+
+    $user = !$email ? null : $this->userService->createUser(
+      $password,
+      $firstName,
+      $lastName,
+      $email,
+      $address,
+      $addressCity,
+      $countryCode,
+      $phoneNumber,
+      $customerCode,
+      $customerEmail
+    );
 
     if ($email) {
       $_SESSION['user'] = $user;

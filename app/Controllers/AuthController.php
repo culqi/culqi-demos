@@ -12,12 +12,6 @@ class AuthController
     $this->userService = $userService;
   }
 
-  public function showLoginForm()
-  {
-    require __DIR__ . '/../../resources/views/login.php';
-  }
-
-
   public function login()
   {
     // Procesar inicio de sesión
@@ -33,7 +27,7 @@ class AuthController
   {
     unset($_SESSION['user']);
     session_destroy();
-    header('Location: /login');
+    header('Location: /');
     exit();
   }
 }
