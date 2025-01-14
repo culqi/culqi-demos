@@ -13,41 +13,62 @@ function createDummyCards()
 
   $cards = [
     [
-      'id' => 'card_live_asdf1234',
-      'alias' => 'Card 1',
-      'user_id' => '1',
-    ],
-    [
-      'id' => 'card_live_qwer5678',
-      'alias' => 'Card 2',
-      'user_id' => '2',
-    ],
-    [
-      'id' => 'card_live_zxcv9012',
-      'alias' => 'Card 3',
-      'user_id' => '3',
-    ],
-    [
-      'id' => 'card_live_1234asdf',
-      'alias' => 'Card 4',
-      'user_id' => '1',
-    ],
-    [
-      'id' => 'card_live_5678qwer',
-      'alias' => 'Card 5',
-      'user_id' => '2',
+      'id' => 'card_live_9012zxcv',
+      'card_number' => '41111111****1111',
+      'token_id' => 'tkn_test_NfbNUAPP6Qat0oXC',
+      'email' => 'test@gmail.com',
+      'creation_date' => '03/01/2025 23:42:36',
+      'user_id' => '676e1ccf0261d'
     ],
     [
       'id' => 'card_live_9012zxcv',
-      'alias' => 'Card 6',
-      'user_id' => '3',
+      'card_number' => '41111111****1111',
+      'token_id' => 'tkn_test_NfbNUAPP6Qat0oXC',
+      'email' => 'test@gmail.com',
+      'creation_date' => '03/01/2025 23:42:36',
+      'user_id' => '676e1ccf0261d'
     ],
-  ];
+    [
+      'id' => 'card_live_9012zxcv',
+      'card_number' => '41111111****1111',
+      'token_id' => 'tkn_test_NfbNUAPP6Qat0oXC',
+      'email' => 'test@gmail.com',
+      'creation_date' => '03/01/2025 23:42:36',
+      'user_id' => '676e1ccf0261d'
+    ],
+    [
+      'id' => 'card_live_9012zxcv',
+      'card_number' => '41111111****1111',
+      'token_id' => 'tkn_test_NfbNUAPP6Qat0oXC',
+      'email' => 'test@gmail.com',
+      'creation_date' => '03/01/2025 23:42:36',
+      'user_id' => '676e1ccf0261d'
+    ],
+    [
+      'id' => 'card_live_9012zxcv',
+      'card_number' => '41111111****1111',
+      'token_id' => 'tkn_test_NfbNUAPP6Qat0oXC',
+      'email' => 'test@gmail.com',
+      'creation_date' => '03/01/2025 23:42:36',
+      'user_id' => '676e1ccf0261d'
+    ],
+    [
+      'id' => 'card_live_9012zxcv',
+      'card_number' => '41111111****1111',
+      'token_id' => 'tkn_test_NfbNUAPP6Qat0oXC',
+      'email' => 'test@gmail.com',
+      'creation_date' => '03/01/2025 23:42:36',
+      'user_id' => '676e1ccf0261d'
+    ],
+  ]; 
 
   foreach ($cards as $card) {
     $record = $db->get(uniqid());
     $record->id = $card['id'];
-    $record->alias = $card['alias'];
+    $record->card_number = $card['card_number'];
+    $record->token_id = $card['token_id'];
+    $record->email = $card['email'];
+    $record->creation_date = $card['creation_date']; 
     $record->user_id = $card['user_id'];
     $record->save();
 

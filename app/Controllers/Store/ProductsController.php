@@ -29,9 +29,9 @@ class ProductsController
       ]);
       return;
     }
-    header('Location: /login');
-    view('auth/login.view.php', [
-      'title' => 'Login'
+    header('Location: /');
+    view('index.view.php', [
+      'title' => 'Home'
     ]);
   }
 }

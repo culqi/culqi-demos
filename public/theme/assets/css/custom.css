@@ -1,0 +1,40 @@
+.overlay-class {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow-y: hidden;
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+}
+
+.spinner-content img {
+    width: 100%;
+    height: auto;
+}
+
+.spinner-label {
+    position: absolute;
+    padding-top: 180px;
+    padding-left: 30px;
+    padding-right: 20px;
+    color: #e7e7e7;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.center-text {
+    text-align: center;
+}

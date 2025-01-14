@@ -1,36 +1,71 @@
-<?php require('components/components.php') ?>
-
-<main>
-  <section class="bg-white py-12">
-    <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-4">Custom Checkout con 3DS</h2>
-      <p class="text-gray-600 text-lg mb-6">Una solución perfecta para probar flujos de pago, checkout personalizado y seguridad avanzada con 3D Secure.</p>
+<div class="container">
+    <div class="mb-10 mt-10 text-center">
+        <h1>Custom Checkout con 3DS</h1>
+        <p class="text-gray-44">Una solución perfecta para probar flujos de pago, checkout personalizado y seguridad avanzada con 3D Secure.</p>
     </div>
-  </section>
-
-  <section id="features" class="py-12 bg-gray-100">
-    <div class="container mx-auto">
-      <h3 class="text-3xl font-bold text-center mb-8">Características</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <?php
-
-        echo renderCard('Custom Checkout', 'En esta demo se utiliza el checkout personalizado de Culqi para ofrecer una experiencia adaptada y segura al usuario.', 'https://docs.culqi.com/es/documentacion/checkout/v4/culqi-checkout-custom/');
-        echo renderCard('3DS', 'Integramos la funcionalidad 3D Secure de Culqi en esta demo para garantizar una capa adicional de seguridad en las transacciones.', 'https://docs.culqi.com/es/documentacion/culqi-3ds/');
-        echo renderCard('SDK Culqi PHP', 'En esta demo hacemos uso del SDK Culqi para PHP, facilitando la conexión con la API de Culqi y simplificando las integraciones.', 'https://github.com/culqi/culqi-php');
-        echo renderCard('Proceso de Pago con Carrito', 'Experimenta en esta demo cómo agregar productos al carrito, revisar el pedido y completar el pago de manera sencilla.');
-        echo renderCard('Cargo Único', 'En esta demo se realiza un cargo único a través del checkout personalizado para pagos directos.', 'https://docs.culqi.com/es/documentacion/pagos-online/cargo-unico/resumen/');
-        echo renderCard('Subscripciones y/o Cargos Recurrentes', 'Implementamos pagos recurrentes en esta demo, utilizando tarjetas previamente guardadas para optimizar las suscripciones.', 'https://docs.culqi.com/es/documentacion/pagos-online/recurrencia/suscripciones/resumen/');
-        ?>
-      </div>
+    <div class="border-bottom border-color-1 mb-8 rounded-0">
+        <h3 class="section-title mb-0 pb-2 font-size-25">Características</h3>
     </div>
-  </section>
+    <div class="row mb-8">
+        <div class="col-lg-4 mb-5 mb-lg-8">
+            <h3 class="font-size-18 font-weight-semi-bold text-gray-39 mb-4">Custom Checkout</h3>
+            <p class="text-gray-90">En esta demo se utiliza el checkout personalizado de Culqi para ofrecer una experiencia adaptada y segura al
+                usuario.
+                <br><br>
+                <a href="https://docs.culqi.com/es/documentacion/checkout/v4/culqi-checkout-custom/" target="_blank"
+                    class="text-blue-500 underline font-weight-bold">Ver
+                    documentación</a>
+            </p>
 
-  <section id="authentication" class="py-12 bg-white">
-    <div class="container mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-6">Comienza Ahora</h3>
-      <p class="text-gray-600 text-lg mb-6">Para acceder a la demo, por favor regístrate o inicia sesión en tu cuenta.</p>
-      <a href="/register" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 mr-4">Regístrate</a>
-      <a href="/login" class="px-6 py-3 bg-gray-600 text-white rounded-lg shadow-lg hover:bg-gray-700">Inicia Sesión</a>
+        </div>
+        <div class="col-lg-4 mb-5 mb-lg-8">
+            <h3 class="font-size-18 font-weight-semi-bold text-gray-39 mb-4">3DS</h3>
+            <p class="text-gray-90">
+                Integramos la funcionalidad 3D Secure de Culqi en esta demo para garantizar una capa adicional de seguridad en las transacciones.
+                <br><br>
+                <a href="https://docs.culqi.com/es/documentacion/culqi-3ds/" target="_blank" class="text-blue-500 underline font-weight-bold">Ver
+                    documentación</a>
+            </p>
+        </div>
+        <div class="col-lg-4 mb-5 mb-lg-8">
+            <h3 class="font-size-18 font-weight-semi-bold text-gray-39 mb-4">SDK Culqi PHP</h3>
+            <p class="text-gray-90">
+                En esta demo hacemos uso del SDK Culqi para PHP, facilitando la conexión con la API de Culqi y simplificando las integraciones.
+                <br><br>
+                <a href="https://github.com/culqi/culqi-php" target="_blank" class="text-blue-500 underline font-weight-bold">Ver
+                    documentación</a>
+            </p>
+        </div>
+        <div class="col-lg-4 mb-5 mb-lg-8">
+            <h3 class="font-size-18 font-weight-semi-bold text-gray-39 mb-4">Proceso de Pago con Carrito</h3>
+            <p class="text-gray-90">
+                Experimenta en esta demo cómo agregar productos al carrito, revisar el pedido y completar el pago de manera sencilla.
+
+                <br><br>
+                <a href="javascript:;" class="text-blue-500 underline font-weight-bold" role="button" id="sidebarNavToggler" data-unfold-event="click"
+                    data-unfold-hide-on-scroll="false" data-unfold-target="#sidebarContent" data-unfold-type="css-animation"
+                    data-unfold-animation-in="fadeInRight" data-unfold-animation-out="fadeOutRight" data-unfold-duration="500">Iniciar Sessión </a>
+            </p>
+        </div>
+        <div class="col-lg-4 mb-5 mb-lg-8">
+            <h3 class="font-size-18 font-weight-semi-bold text-gray-39 mb-4">Cargo Único</h3>
+            <p class="text-gray-90">
+                En esta demo se realiza un cargo único a través del checkout personalizado para pagos directos.
+                <br><br>
+                <a href="https://docs.culqi.com/es/documentacion/pagos-online/cargo-unico/resumen/" target="_blank"
+                    class="text-blue-500 underline font-weight-bold">Ver
+                    documentación</a>
+            </p>
+        </div>
+        <div class="col-lg-4 mb-5 mb-lg-8">
+            <h3 class="font-size-18 font-weight-semi-bold text-gray-39 mb-4">Subscripciones y/o Cargos Recurrentes</h3>
+            <p class="text-gray-90">
+                Implementamos pagos recurrentes en esta demo, utilizando tarjetas previamente guardadas para optimizar las suscripciones.
+                <br><br>
+                <a href="https://docs.culqi.com/es/documentacion/pagos-online/recurrencia/suscripciones/resumen/" target="_blank"
+                    class="text-blue-500 underline font-weight-bold">Ver
+                    documentación</a>
+            </p>
+        </div>
     </div>
-  </section>
-</main>
+</div>

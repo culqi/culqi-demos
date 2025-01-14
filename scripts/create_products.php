@@ -14,27 +14,52 @@ function createDummyProducts()
   $products = [
     [
       'id' => 1,
-      'name' => 'Product 1',
-      'description' => 'Description for product 1',
+      'name' => 'Wireless Audio',
+      "image" => "./theme/assets/img/212X200/img1.jpg",
+      'description' => 'Speakers',
       'price' => 100.00,
     ],
     [
       'id' => 2,
-      'name' => 'Product 2',
-      'description' => 'Description for product 2',
+      'name' => 'Tablet White',
+      "image" => "./theme/assets/img/212X200/img2.jpg",
+      'description' => 'Tablets',
       'price' => 200.00,
     ],
     [
       'id' => 3,
-      'name' => 'Product 3',
-      'description' => 'Description for product 3',
+      'name' => 'Purple Solo 2 Wireless',
+      "image" => "./theme/assets/img/212X200/img3.jpg",
+      'description' => 'Speakers',
       'price' => 300.00,
     ],
     [
       'id' => 4,
-      'name' => 'Product 4',
-      'description' => 'Description for product 4',
+      'name' => 'Widescreen NX Mini F1 SMART NX',
+      "image" => "./theme/assets/img/212X200/img4.jpg",
+      'description' => 'Photographic camera',
       'price' => 400.00,
+    ],
+    [
+      'id' => 5,
+      'name' => 'Smartphone 6S 32GB LTE',
+      "image" => "./theme/assets/img/212X200/img5.jpg",
+      'description' => 'Smartphones',
+      'price' => 500.00,
+    ],
+    [
+      'id' => 6,
+      'name' => 'Tablet White EliteBook Revolve 810 G2',
+      "image" => "./theme/assets/img/212X200/img2.jpg",
+      'description' => 'Tablets',
+      'price' => 600.00,
+    ],
+    [
+      'id' => 7,
+      'name' => 'Wireless Audio System Multiroom 360 degree Full base audio',
+      "image" => "./theme/assets/img/212X200/img1.jpg",
+      'description' => 'Speakers',
+      'price' => 700.00,
     ]
   ];
 
@@ -42,6 +67,7 @@ function createDummyProducts()
     $record = $db->get(uniqid());
     $record->id = $product['id'];
     $record->name = $product['name'];
+    $record->image = $product['image'];
     $record->description = $product['description'];
     $record->price = $product['price'];
     $record->save();

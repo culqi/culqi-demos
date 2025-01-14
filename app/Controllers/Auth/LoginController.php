@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controllers\Auth;
-use Core\Session;
 use App\Services\UserService;
 
 
@@ -12,13 +11,6 @@ class LoginController
   public function __construct(UserService $userService)
   {
     $this->userService = $userService;
-  }
-
-  public function view()
-  {
-    view('auth/login.view.php', [
-      'title' => 'Login'
-    ]);
   }
 
   public function login()
@@ -46,7 +38,6 @@ class LoginController
   public function logout()
   {
     unset($_SESSION['user']);
-    header('Location: /login');
+    header('Location: /');
   }
 }
-
