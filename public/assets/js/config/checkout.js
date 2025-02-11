@@ -164,7 +164,7 @@ export const checkout = {
 
       culqi3DSConfig(false, email, bodyCard, configParams);
 
-      if (response.statusCode === 200) {
+      if (response.statusCode === 200 && response.data.action_code === 'REVIEW') {
         Loader(false);
         CulqiInstance.close();
         await Culqi3DS.initAuthentication(tokenId);
@@ -175,6 +175,7 @@ export const checkout = {
         createLocalCard(response.data, false);
       } else {
         Loader(false);
+        alert("Error al crear la tarjeta");
         console.log("Error al crear la tarjeta: ", response.data);
       }
 
@@ -229,7 +230,7 @@ export const checkout = {
 
       culqi3DSConfig(true, configParams.email, bodyCharge, configParams);
 
-      if (response.statusCode === 200) {
+      if (response.statusCode === 200 && response.data.action_code === 'REVIEW') {
         Loader(false);
         await Culqi3DS.initAuthentication(tokenId);
       } else if (response.statusCode === 201) {
@@ -273,7 +274,7 @@ export const checkout = {
 
       culqi3DSConfig(true, configParams.email, bodyCharge, configParams);
 
-      if (response.statusCode === 200) {
+      if (response.statusCode === 200 && response.data.action_code === 'REVIEW') {
         console.log("init 3ds: " + configParams.token_id);
         await Culqi3DS.initAuthentication(configParams.token_id);
       } else if(response.statusCode === 201) {
@@ -282,6 +283,7 @@ export const checkout = {
         window.location.href = '/payment?paymentStatus=success&paymentCode=' + response.data.id;
       }
         console.log("error: ", response);
+        alert("Hubo un problema al procesar el pago. Por favor, inténtalo nuevamente.");
         Loader(false);
     } catch (error) {
       Loader(false);
