@@ -62,15 +62,6 @@ namespace App\Config;
 
 final class Config
 {
-  public const DATABASE_HOST = 'localhost';
-  public const DATABASE_NAME = 'my_database';
-  public const DATABASE_USER = 'root';
-  public const DATABASE_PASSWORD = 'password';
-
-  public const API_BASE_URL = 'https://api.culqi.com/v2';
-  public const APP_ENV = 'production';
-  public const CHECKOUT_URL = 'https://js.culqi.com/checkout-js';
-
   // * Culqi Config
   public const PUBLIC_KEY = '<<PUBLIC_KEY>>';
   public const SECRET_KEY = '<<SECRET_KEY>>';
