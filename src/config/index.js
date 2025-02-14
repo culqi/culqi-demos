@@ -1,7 +1,9 @@
 const publicKey = import.meta.env.VITE_APP_CULQI_PUBLICKEY;
-const secretKey = import.meta.env.VITE_APP_CULQI_SECRETKEY;
 const rsaId = import.meta.env.VITE_APP_CULQI_RSA_ID;
 const rsaPublicKey = import.meta.env.VITE_APP_CULQI_RSA_ID;
+const isRequiredEncrypt = import.meta.env.VITE_APP_CULQI_ACTIVE_ENCRYPT;
+const isActiveEncrypt = isRequiredEncrypt && isRequiredEncrypt === "true";
+
 const currency = import.meta.env.VITE_APP_CULQI_CURRENCY;
 
 //integracion
@@ -13,7 +15,7 @@ export const checkoutConfig = Object.freeze({
   RSA_ID: rsaId,
   RSA_PUBLIC_KEY: rsaPublicKey,
   URL_BASE: "http://localhost:5173",
-  ACTIVE_ENCRYPT: false
+  ACTIVE_ENCRYPT: isActiveEncrypt
 });
 
 // export const customerInfo = {
