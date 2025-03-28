@@ -4,6 +4,8 @@ Este proyecto es un ejemplo de cómo integrar **Culqi Checkout (JS Custom)** den
 
 La demo integra Culqi Checkout Custom, Culqi 3DS y es compatible con la versión 2.0 de la API de Culqi. Con esta demostración, podrás generar tokens, cargos, clientes y tarjetas.
 
+### Importante
+
 ##### Se recomienda que la integración con el checkout sea a través de una ruta https para que así pueda contar con todos los controles de seguridad
 
 ---
