@@ -20,8 +20,8 @@ La demo integra Culqi Flutter, Custom Checkout, Culqi 3DS. Es compatible con la 
 
 Culqi Checkout JS Custom puede ser integrado de dos formas:
 
-1. **HTML embebido**: Carga el script de Culqi Checkout JS v4 directamente en un HTML embebido.
-2. **Por enlace**: Carga el script de Culqi Checkout JS v4 a través de un enlace.
+1. **HTML embebido**: Carga el script de Culqi Checkout JS Custom directamente en un HTML embebido.
+2. **Por enlace**: Carga el script de Culqi Checkout JS Custom a través de un enlace.
  
 ---
 
