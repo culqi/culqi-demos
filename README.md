@@ -47,8 +47,7 @@ Culqi Checkout JS Custom puede ser integrado de dos formas:
 
 1. Clona el repositorio o descarga el proyecto.
 2. Abre `CulqiCheckout.xcodeproj` en Xcode.
-3. Asegúrate de incluir el archivo `custom-checkout.html` en tu bundle.
-4. Modifica la llave pública en `MainViewController.swift`:
+3. Modifica la llave pública en `MainViewController.swift`:
 
 ---
 
