@@ -55,9 +55,16 @@ Esto instalará todas las dependencias necesarias para el proyecto.
 
 ## Configuración del proyecto
 
+Todos los cambios se deben realizar en el archivo 
+
+``` 
+lib/main.dart
+```
+
 se debe modificar el public_key 
 
 ```
+Culqi.publicKey = "pk_test_xxxxxxxxx";
 Llave pública del comercio (pk_test_xxxxxxxxx); 
 ```
 
