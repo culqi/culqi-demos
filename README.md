@@ -53,9 +53,16 @@ Culqi Checkout JS Custom puede ser integrado de dos formas:
 
 ## Configuración del proyecto
 
+Todos los cambios se deben realizar en el archivo 
+
+``` 
+culqi-checkout/ContentView.swift
+```
+
 se debe modificar el public_key 
 
 ```
+Culqi.publicKey = "pk_test_xxxxxxxxx";
 Llave pública del comercio (pk_test_xxxxxxxxx); 
 ```
 
