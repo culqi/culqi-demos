@@ -75,3 +75,7 @@ Para poder visualizar el frontend de la demo ingresar a la siguiente URL:
 > **Explora más demos en otros lenguajes de programación:**
 >
 > - Visita nuestro repositorio [culqi-demos](https://github.com/culqi/culqi-demos) para encontrar una variedad de ejemplos en diferentes lenguajes.
+
+## Configurar las pruebas y ejemplos
+
+Reemplaza los placeholders `INSERTE_SU_LLAVE_PUBLICA`, `INSERTE_SU_LLAVE_PRIVADA`, `INSERTE_SU_LLAVE_RSA` y `INSERTE_SU_RSA_ID` con llaves `pk_test_`/`sk_test_` y valores RSA propios de tu comercio. No hagas commit de llaves. Las pruebas y ejemplos pueden realizar llamadas reales a la API de Culqi.
