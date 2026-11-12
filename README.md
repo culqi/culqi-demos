@@ -41,3 +41,7 @@ Aquí tienes algunos enlaces a los proyectos demo que corresponden a los compone
 
 ### JAVA
 - [DEMO Custom Checkout con Culqi 3DS](./java/checkout/custom-checkout-with-culqi3ds/README.md)
+
+## Configurar las pruebas y ejemplos
+
+Reemplaza los placeholders `INSERTE_SU_LLAVE_PUBLICA`, `INSERTE_SU_LLAVE_PRIVADA`, `INSERTE_SU_LLAVE_RSA` y `INSERTE_SU_RSA_ID` con llaves `pk_test_`/`sk_test_` y valores RSA propios de tu comercio. No hagas commit de llaves. Las pruebas y ejemplos pueden realizar llamadas reales a la API de Culqi.
